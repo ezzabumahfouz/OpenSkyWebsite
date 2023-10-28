@@ -10,7 +10,7 @@
 @media screen and (max-width: 1040px) {
   .navbar {
     overflow: hidden;
-    background-color: white;
+    background-color: #11999e;
     display: flex;
     flex-flow: column wrap;
     justify-content: space-between;
@@ -20,7 +20,7 @@
 @media screen and (min-width: 1041px) {
   .navbar {
     overflow: hidden;
-    background-color: white;
+    background-color: #11999e;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
@@ -43,22 +43,24 @@
   text-decoration: none;
 }
 .navbar a img {
-  height: 163px;
-  width: 245px;
+  height: 123px;
+  width: 186px;
   background-size: contain;
 }
 .navbar a .flag {
-  height: 43px;
-  width: 75px;
+  height: 0px;
+  width: 0px;
   background-size: contain;
-}
-
-.dropdown {
-  float: left;
   overflow: hidden;
 }
 
-.dropdown .dropbtn {
+.carrerDropDown .dropdown {
+  float: left;
+  overflow: hidden;
+  display: block;
+}
+
+.carrerDropDown .dropdown .dropbtn {
   font-size: 22px;
   font-weight: 700;
   border: none;

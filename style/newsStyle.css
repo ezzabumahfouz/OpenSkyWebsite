@@ -43,8 +43,8 @@
   text-decoration: none;
 }
 .navbar a img {
-  height: 163px;
-  width: 245px;
+  height: 123px;
+  width: 205px;
   background-size: contain;
 }
 .navbar a .flag {
@@ -59,6 +59,7 @@
 }
 
 .dropdown .dropbtn {
+
   font-size: 22px;
   font-weight: 700;
   border: none;
@@ -96,6 +97,7 @@
   transform-origin: bottom left;
 }
 .dropdown-content {
+
   display: none;
   position: absolute;
   background-color: #f9f9f9;

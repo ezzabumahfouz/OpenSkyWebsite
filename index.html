@@ -2,877 +2,898 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="style/indexStyle.css">
-    <link rel="icon" type="x-icon" href="assets/images/Untitled_design__2_-removebg-preview.png" sizes="16x16">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Open Sky | Home</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="style/indexStyle.css">
+  <link rel="icon" type="x-icon" href="assets/images/Untitled_design__2_-removebg-preview.png" sizes="16x16">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Open Sky | Home</title>
 
-    <!-- Cookies -->
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <title>Popup Cookie Consent Box</title>
-    <link rel="stylesheet" href="style.css" />
-    <!-- Boxicons CSS -->
-    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
-    <script src="script.js" defer></script>
-    
+  <!-- Cookies -->
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Popup Cookie Consent Box</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Boxicons CSS -->
+  <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet" />
+  <script src="script.js" defer></script>
+
 </head>
 
 <body id="body">
 
-    <!-- Cookies -->
-    <div class="wrapper">
-        <header>
-          <i class="bx bx-cookie"></i>
-          <h2>Cookies Consent</h2>
-        </header>
-        <div class="data">
-          <p>This website use cookies to help you have a superior and more relevant browsing experience on the website. 
-            <!-- <a href="#"> Read more...</a> -->
-        </p>
+  <!-- Cookies -->
+  <div class="wrapper">
+    <header>
+      <i class="bx bx-cookie"></i>
+      <h2>Cookies Consent</h2>
+    </header>
+    <div class="data">
+      <p>This website use cookies to help you have a superior and more relevant browsing experience on the website.
+        <!-- <a href="#"> Read more...</a> -->
+      </p>
+    </div>
+    <div class="buttons">
+      <button class="button" id="acceptBtn">Accept</button>
+      <button class="button" id="declineBtn">Decline</button>
+    </div>
+  </div>
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+    .wrapper {
+      position: fixed;
+      bottom: 50px;
+      left: -400px;
+      max-width: 345px;
+      width: 100%;
+      background: #fff;
+      border-radius: 8px;
+      border-style: solid;
+      border-color: #11999E;
+
+      padding: 15px 25px 22px;
+      transition: left 0.3s ease;
+      -webkit-box-shadow: 0px 0px 12px 6px rgba(128, 128, 128, 0.6);
+      box-shadow: 0px 0px 12px 6px rgba(128, 128, 128, 0.6);
+    }
+
+    .wrapper.show {
+      left: 20px;
+    }
+
+    .wrapper header {
+      display: flex;
+      align-items: center;
+      column-gap: 15px;
+    }
+
+    header i {
+      color: #11999e;
+      font-size: 32px;
+    }
+
+    .dropdown-content i {
+      color: #ffffff;
+      font-size: 18px;
+    }
+
+    header h2 {
+      color: #11999e;
+      font-weight: 500;
+    }
+
+    .wrapper .data {
+      margin-top: 16px;
+    }
+
+    .wrapper .data p {
+      color: #333;
+      font-size: 16px;
+    }
+
+    .data p a {
+      color: #11999e;
+      text-decoration: none;
+    }
+
+    .data p a:hover {
+      text-decoration: underline;
+    }
+
+    .wrapper .buttons {
+      margin-top: 16px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .buttons .button {
+      border: none;
+      color: #fff;
+      padding: 8px 0;
+      border-radius: 4px;
+      background: #11999e;
+      cursor: pointer;
+      width: calc(100% / 2 - 10px);
+      transition: all 0.2s ease;
+    }
+
+    .buttons #acceptBtn:hover {
+      background-color: #11999e;
+    }
+
+    #declineBtn {
+      border: 2px solid #11999e;
+      background-color: #fff;
+      color: #11999e;
+    }
+
+    #declineBtn:hover {
+      background-color: #11999e;
+      color: #fff;
+    }
+  </style>
+  <script>
+    const cookieBox = document.querySelector(".wrapper"),
+      buttons = document.querySelectorAll(".button");
+    const executeCodes = () => {
+      //if cookie contains codinglab it will be returned and below of this code will not run
+      if (document.cookie.includes("codinglab")) return;
+      cookieBox.classList.add("show");
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          cookieBox.classList.remove("show");
+          //if button has acceptBtn id
+          if (button.id == "acceptBtn") {
+            //set cookies for 1 month. 60 = 1 min, 60 = 1 hours, 24 = 1 day, 30 = 30 days
+            document.cookie = "cookieBy= codinglab; max-age=" + 60 * 60 * 24 * 30;
+          }
+        });
+      });
+    };
+    //executeCodes function will be called on webpage load
+    window.addEventListener("load", executeCodes);
+  </script>
+  <!-- Cookies -->
+
+
+
+
+
+  <header class="navbar">
+
+    <a href="index.html"><img class="logo" src="assets/images/opanSkySoftware.png"></a>
+    <div class="nav-pages">
+      <div class="dropdown">
+        <div class="hover-underline-animation">
+          <button class="dropbtn">About
+            <i class="fa fa-caret-down"></i>
+
+          </button>
         </div>
-        <div class="buttons">
-          <button class="button" id="acceptBtn">Accept</button>
-          <button class="button" id="declineBtn">Decline</button>
-        </div>
-      </div>
 
-      <style>
-        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
-/* * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-} */
-/* body {
-  min-height: 100vh;
-  background-color: #11999e;
-} */
-.wrapper {
-  position: fixed;
-  bottom: 50px;
-  left: -400px;
-  max-width: 345px;
-  width: 100%;
-  background: #fff;
-  border-radius: 8px;
-  border-style: solid;
-  border-color: #11999E;
+        <div class="dropdown-content">
+          <!-- <div class="header">
+                            <h3>About Open Sky Company    <i class="fa fa-info-circle"></i></h3> 
+                      </div> -->
 
-  padding: 15px 25px 22px;
-  transition: left 0.3s ease;
-  -webkit-box-shadow: 0px 0px 12px 6px rgba(128,128,128,0.6); 
-box-shadow: 0px 0px 12px 6px rgba(128,128,128,0.6);
-}
-.wrapper.show {
-  left: 20px;
-}
-.wrapper header {
-  display: flex;
-  align-items: center;
-  column-gap: 15px;
-}
-header i {
-  color: #11999e;
-  font-size: 32px;
-}
-header h2 {
-  color: #11999e;
-  font-weight: 500;
-}
-.wrapper .data {
-  margin-top: 16px;
-}
-.wrapper .data p {
-  color: #333;
-  font-size: 16px;
-}
-.data p a {
-  color: #11999e;
-  text-decoration: none;
-}
-.data p a:hover {
-  text-decoration: underline;
-}
-.wrapper .buttons {
-  margin-top: 16px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.buttons .button {
-  border: none;
-  color: #fff;
-  padding: 8px 0;
-  border-radius: 4px;
-  background: #11999e;
-  cursor: pointer;
-  width: calc(100% / 2 - 10px);
-  transition: all 0.2s ease;
-}
-.buttons #acceptBtn:hover {
-  background-color: #11999e;
-}
-#declineBtn {
-  border: 2px solid #11999e;
-  background-color: #fff;
-  color: #11999e;
-}
-#declineBtn:hover {
-  background-color: #11999e;
-  color: #fff;
-}
-      </style>
-      <script>
-        const cookieBox = document.querySelector(".wrapper"),
-  buttons = document.querySelectorAll(".button");
-const executeCodes = () => {
-  //if cookie contains codinglab it will be returned and below of this code will not run
-  if (document.cookie.includes("codinglab")) return;
-  cookieBox.classList.add("show");
-  buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-      cookieBox.classList.remove("show");
-      //if button has acceptBtn id
-      if (button.id == "acceptBtn") {
-        //set cookies for 1 month. 60 = 1 min, 60 = 1 hours, 24 = 1 day, 30 = 30 days
-        document.cookie = "cookieBy= codinglab; max-age=" + 60 * 60 * 24 * 30;
-      }
-    });
-  });
-};
-//executeCodes function will be called on webpage load
-window.addEventListener("load", executeCodes);
-      </script>
-    <!-- Cookies -->
+          <div class="row">
+            <div class="column">
+              <h3>Who we are</h3>
+              <a href="#">Know More</a>
+              <a href="#">The Way We Work</a>
+              <a href="#">Values & Ethics</a>
+            </div>
+            <div class="column">
+              <h3>Management</h3>
+              <a href="#"> Board of Directors</a>
+              <a href="#">Management Team</a>
+            </div>
+            <div class="column">
+              <h3>Contact Us</h3>
+              <a href="screens\getintouchPage.html">Get In Touch</a>
+              <a href="#">Location</a>
+              <a href="#">Join Our Teama</a>
 
-
-
-
-
-    <header class="navbar">
-
-        <a href="index.html"><img class="logo" src="assets/images/opanSkySoftware.png"></a>
-        <div class="nav-pages">
-            <div class="dropdown">
-                <button class="dropbtn">About Us
-                    <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-content">
-                    <a href="#section1">Who we are</a>
-                    <a href="screens/management.html">Management</a>
-                    <a href="screens/management.html">Technology partners</a>
-                    <a href="screens/management.html">Location</a>
-
-                </div>
             </div>
 
-            <!-- <a href="javascript:history.back()">Home</a> -->
-            <a class="hover-underline-animation" href="#section2">Services</a>
-            <a class="hover-underline-animation" href="#section3">Industries</a>
-            <a class="hover-underline-animation" href="screens/news.html">News</a>
-            <a class="hover-underline-animation" href="screens/carrers.html">Carrers</a>
-
+          </div>
         </div>
-        <div class="dropdown" >
-            <a  id="flagShow"><img class="flag" src="assets/images/jordan (1).png"></a>
-        </div>
-        </div>
+      </div>
+      <style>
+        * {
+          box-sizing: border-box;
+        }
 
-
-    </header>
-
-
-
-
-
-
-    <!-------------- WELCOME SCREEN --------------->
+        body {
+          margin: 0;
+        }
 
 
 
 
 
+        .dropdown-content {
+          display: none;
+          position: absolute;
+          background-color: #22cccfc6;
+          width: 50%;
+          left: 25%;
+          /* box-shadow: 1px 8px 16px 1px rgba(0,0,0,0.2);
+                   */
+          box-shadow: 1px 4px 9px 3px rgba(17, 153, 158, 0.64);
+          -webkit-box-shadow: 1px 4px 9px 3px rgba(17, 153, 158, 0.64);
+          -moz-box-shadow: 1px 4px 9px 3px rgba(17, 153, 158, 0.64);
+          z-index: 1;
+          border-radius: 30px;
+        }
+
+        .dropdown-content .header {
+          background: #11999e;
+          padding: 16px;
+          color: white;
+
+        }
+
+        .dropdown-content .header h3 {
+          font-size: 20px;
+        }
+
+        .dropdown:hover .dropdown-content {
+          display: block;
+        }
+
+        /* Create three equal columns that floats next to each other */
+        .column {
+          float: left;
+          width: 33.33%;
+          padding: 20px 40px;
+          /* background-color: #D3D3D3;
+                   */
+          background-color: #eaeaea;
+
+          height: 250px;
+        }
+
+        .column a {
+          float: none;
+          color: black;
+          padding: 10px 5px;
+          text-decoration: none;
+          display: block;
+          text-align: left;
+        }
 
 
-    <div id="collapse" class="show">
-        <h1>
-            Technology is the great equalizer, <br> breaking down barriers and opening up new <br> opportunities
-            for all. </h1>
+
+        .column a:hover {
+          background-color: #11999e;
+          color: white;
+          transition-duration: 0.4s;
 
 
-        <input type="button" value="Start your journey    🚀" onclick="toggle()">
+        }
+
+        .column h3 {
+          padding-bottom: 33px;
+          padding-top: 15px;
+
+        }
+
+        .column .fa {
+          color: #eaeaea;
+
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+          content: "";
+          display: table;
+          clear: both;
+
+        }
+
+        /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+        @media screen and (max-width: 600px) {
+          .column {
+            width: 100%;
+            height: auto;
+
+          }
+        }
+      </style>
+
+      <!-- <a href="javascript:history.back()">Home</a> -->
+      <a class="hover-underline-animation" href="#section2">Services</a>
+      <a class="hover-underline-animation" href="#section3">Partners</a>
+      <a class="hover-underline-animation" href="screens/news.html">News</a>
 
 
+      <!-- <div class="carrerDropDown">
+                <div class="dropdown">
+                    <button class="dropbtn">Carrers
+                    </button>
+                    <div class="dropdown-content">
+                        <a href="#">Why Open Sky</a>
+                        <a href="#">Technologies</a>
+                        <a href="#">Join Us</a>
+                    </div>
+                </div>
+            </div> -->
 
+      <!-- <a class="hover-underline-animation" href="screens/carrers.html">Carrers</a> -->
+
+    </div>
+    <div class="dropdown">
+      <a id="flagShow"><img class="flag"> </a>
+    </div>
     </div>
 
 
-    <style>
-        @media screen and (min-width: 501px) {}
+  </header>
 
-        @keyframes zoomin {
-            0% {
-                /* -webkit-transform: scaleY(1.3);
+
+
+
+
+
+  <!-------------- WELCOME SCREEN --------------->
+
+
+
+
+
+
+
+
+
+  <style>
+    @media screen and (min-width: 501px) {}
+
+    @keyframes zoomin {
+      0% {
+        /* -webkit-transform: scaleY(1.3);
                 -webkit-transform: scaleX(1.1); */
-                transform: scale(1.1);
-                filter: blur(2px);
+        transform: scale(1.1);
+        filter: blur(2px);
 
-            }
+      }
 
-            100% {
-                /* -webkit-transform: scaleY(1.0);
+      100% {
+        /* -webkit-transform: scaleY(1.0);
                 -webkit-transform: scaleX(1.0); */
-                transform: scale(1.0);
+        transform: scale(1.0);
 
-            }
-        }
+      }
+    }
 
-        /*  */
-
-        @media screen and (min-width: 501px) {
-            .show h1 {
-                /* margin-top: 100px; */
-                color: black;
-                padding: 8.583vw 6.082vw;
-                font-size: 48px;
-                font-weight: 600;
-                -webkit-animation: leftToRight 1.0s linear;
-                animation: zoomin 2.0s linear;
-                text-align: left;
-
-
-                @keyframes leftToRight {
-                    0% {
-                        /* -webkit-transform: scaleY(1.3);
-                -webkit-transform: scaleX(1.1); */
-
-                        transform: scale(0.2);
-                    }
-
-                    100% {
-                        /* -webkit-transform: scaleY(1.0);
-                -webkit-transform: scaleX(1.0); */
-
-                        transform: scale(1.0);
-
-                    }
-
-
-                }
-            }
-
-            #collapse {
-                background-image: url("assets/images/newBackGround.png");
-                width: 100%;
-                height: 100%;
-                transition: all 1s;
-                position: fixed;
-                bottom: 0;
-                right: 0;
-                /*  */
-                -webkit-background-size: cover;
-                -moz-background-size: cover;
-                -o-background-size: cover;
-                background-size: cover;
-                background-position: center;
-                overflow: hidden;
-
-                /* background-position-x: 100%;
-            background-position-y: 100%; */
-                -webkit-animation: zoomin 1.0s linear;
-                animation: zoomin 1.0s linear;
-                animation-fill-mode: both;
-
-                z-index: 1000;
-
-            }
-
-            .show input {
-                background-color: black;
-                margin: auto;
-                display: block;
-                padding: 30px 50px;
-                border-radius: 8px;
-                border: hidden;
-                font-size: 24px;
-                color: #F3F6F6;
-                transition: 0.2s;
-                cursor: pointer;
-            }
-
-            .show input:hover {
-                letter-spacing: 1px;
-                word-spacing: 5px;
-                text-shadow: 1px 1px 1px #11999E;
-                -webkit-box-shadow: -4px 6px 15px -3px rgba(255, 255, 255, 0.73);
-                box-shadow: -4px 6px 15px -3px rgba(255, 255, 255, 0.73);
-            }
-
-
-
-        }
-
-        @media screen and (max-width: 500px) {
-            #collapse {
-                background-image: url("assets/images/newBackGround.png");
-                width: 100vw;
-                height: 100vh;
-                transition: all 1s;
-                position: fixed;
-                overflow: hidden;
-                display: block;
-                top: 0;
-                bottom: 0;
-
-                -webkit-animation: zoomin 1.0s linear;
-                animation: zoomin 1.0s linear;
-                animation-fill-mode: both;
-
-                z-index: 1000;
-                background-size: cover;
-
-            }
-
-            .show h1 {
-                /* margin-top: 100px; */
-                color: black;
-                margin: 100px 30px;
-                font-size: 30px;
-                font-weight: 600;
-                -webkit-animation: leftToRight 1.0s linear;
-                animation: zoomin 2.0s linear;
-                text-align: center;
-
-
-                @keyframes leftToRight {
-                    0% {
-                        transform: scale(0.2);
-                    }
-
-                    100% {
-                        transform: scale(1.0);
-
-                    }
-
-
-                }
-            }
-
-            .show input {
-                background-color: black;
-                margin: auto;
-                display: block;
-                padding: 15px;
-                border-radius: 8px;
-                border: hidden;
-                font-size: 24px;
-                color: #F3F6F6;
-                transition: 0.2s;
-                cursor: pointer;
-            }
-
-            .show input:hover {
-                letter-spacing: 1px;
-                word-spacing: 5px;
-                text-shadow: 1px 1px 1px #11999E;
-                -webkit-box-shadow: -4px 6px 15px -3px rgba(255, 255, 255, 0.73);
-                box-shadow: -4px 6px 15px -3px rgba(255, 255, 255, 0.73);
-            }
-
-        }
+    /*  */
 
 
 
 
-        /* (B) HIDE */
-        #collapse.hide {
-            height: 0px;
-            opacity: 0.1;
-            transform: scaleX(0.0);
-            overflow: hidden;
-            background-color: black;
+
+
+    /* (B) HIDE */
+    #collapse.hide {
+      height: 0px;
+      opacity: 0.1;
+      transform: scaleX(0.0);
+      overflow: hidden;
+      background-color: black;
 
 
 
-        }
-    </style>
-    <script>
-        if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
-            document.getElementById("collapse").classList.toggle("hide");
-        }
-        else if (performance.navigation.type == performance.navigation.TYPE_BACK_FORWARD) {
-            document.getElementById("collapse").classList.toggle("hide");
-        }
+    }
+  </style>
+  <script>
+    if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+      document.getElementById("collapse").classList.toggle("hide");
+    }
+    else if (performance.navigation.type == performance.navigation.TYPE_BACK_FORWARD) {
+      document.getElementById("collapse").classList.toggle("hide");
+    }
 
 
-        function toggle() {
-            document.getElementById("collapse").classList.toggle("hide");
+    function toggle() {
+      document.getElementById("collapse").classList.toggle("hide");
 
-        }
+    }
 
-    </script>
+  </script>
 
-    <div class="ourStory">
+  <div class="ourStory">
 
-        <h1>Our Story</h1>
-        <p>
-            In 2019, Open Sky Company was founded, by which the business had set 2020 as the launch date for a new
-            e-commerce initiative.
-            But unfortunately, the company faced a major challenge when the world was hit by the COVID-19 pandemic.
-            Business came to a standstill and the future seemed uncertain.
+    <h1>Our Story</h1>
+    <p>
+      In 2019, Open Sky Company was founded, by which the business had set 2020 as the launch date for a new
+      e-commerce initiative.
+      But unfortunately, the company faced a major challenge when the world was hit by the COVID-19 pandemic.
+      Business came to a standstill and the future seemed uncertain.
 
-            The company adapted quickly to the changing circumstances and found new ways to serve our customers. Our
-            team pulled together, showing resilience and determination in the face of adversity.
+      The company adapted quickly to the changing circumstances and found new ways to serve our customers. Our
+      team pulled together, showing resilience and determination in the face of adversity.
 
-            As the world slowly started to reopen, we stood back up, stronger than ever. We continued to innovate and
-            find new solutions to the problems that the pandemic had created.
-        </p>
+      As the world slowly started to reopen, we stood back up, stronger than ever. We continued to innovate and
+      find new solutions to the problems that the pandemic had created.
+    </p>
 
+  </div>
+  <!-- ---------        About Us            ------------ -->
+
+  <div class="aboutUs" id="section1">
+    <h1>About Us</h1>
+
+    <p>
+      Open Sky Jordan is a Jordan-based company part of the Open Sky group of companies that operate in Three
+      countries (Jordan, Egypt and UAE). The company’s main focus is to act as a reselling and staff augmentation
+      company for the main players in the ICT industry. Open Sky has delivered multiple successful projects in the
+      staff augmentation, telecom sales, Digital transformation and e-commerce fields.
+    </p>
+
+    <h4>
+      01
+    </h4>
+
+    <div class="service" id="container">
+      <span id="text1"></span>
+      <span id="text2"></span>
     </div>
-    <!-- ---------        About Us            ------------ -->
 
-    <div class="aboutUs" id="section1">
-        <h1>About Us</h1>
-
-        <p>
-            Open Sky Jordan is a Jordan-based company part of the Open Sky group of companies that operate in Three
-            countries (Jordan, Egypt and UAE). The company’s main focus is to act as a reselling and staff augmentation
-            company for the main players in the ICT industry. Open Sky has delivered multiple successful projects in the
-            staff augmentation, telecom sales, Digital transformation and e-commerce fields.
-        </p>
-
-        <h4>
-            01
-        </h4>
-
-        <div class="service" id="container">
-            <span id="text1"></span>
-            <span id="text2"></span>
-        </div>
-
-        <svg id="filters">
-            <defs>
-                <filter id="threshold">
-                    <feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0
+    <svg id="filters">
+      <defs>
+        <filter id="threshold">
+          <feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0
                                             0 1 0 0 0
                                             0 0 1 0 0
                                             0 0 0 255 -140" />
-                </filter>
-            </defs>
-        </svg>
+        </filter>
+      </defs>
+    </svg>
 
-        <!-- --------------------- -->
-        <div class="val">
-            <div class="circle1" id="circle1" style="display:none"><a href="screens/company.html#vision">Vision</a>
-            </div>
-            <div class="circle2" id="circle2" style="display:none"><a href="screens/company.html#mission">Mission</a>
-            </div>
-            <div class="circle3" id="circle3" style="display:none"><a href="screens/company.html#value">Value</a></div>
-            <div class="center">
-                <div class="centerButton">
-                    <button onclick="myFunction()" id="btn">Show Up</button>
+    <!-- --------------------- -->
+    <div class="val">
+      <div class="circle1" id="circle1" style="display:none"><a href="screens/company.html#vision">Vision</a>
+      </div>
+      <div class="circle2" id="circle2" style="display:none"><a href="screens/company.html#mission">Mission</a>
+      </div>
+      <div class="circle3" id="circle3" style="display:none"><a href="screens/company.html#value">Value</a></div>
+      <div class="center">
+        <div class="centerButton">
+          <button onclick="myFunction()" id="btn">Show Up</button>
 
-                </div>
-
-            </div>
         </div>
-        <h4 id="section2">
-            02
-        </h4>
-        <h5>
-            Services
 
-        </h5>
-        <h6>
-            what we can do for you !
-        </h6>
-
-
+      </div>
     </div>
-    <div class="business-process">
-        <article class="card">
-            <img class="card__background" src="assets/images/back1.png"
-                alt="Photo of Cartagena's cathedral at the background and some colonial style houses" width="1920"
-                height="2193" />
-            <div class="card__content | flow">
-                <div class="card__content--container | flow">
-                    <h2 class="card__title">STAFF AUGMENTATION</h2>
-                    <p class="card__description">
-                        Staff augmentations are a new trend that will help you focus more on your main company while
-                        reducing the hassle of hiring and finding the suitable workers </p>
-                </div>
+    <h4 id="section2">
+      02
+    </h4>
+    <h5>
+      Services
+
+    </h5>
+    <h6>
+      what we can do for you !
+    </h6>
+
+
+  </div>
+  <div class="business-process">
+    <article class="card">
+      <img class="card__background" src="assets/images/back1.png"
+        alt="Photo of Cartagena's cathedral at the background and some colonial style houses" width="1920"
+        height="2193" />
+      <div class="card__content | flow">
+        <div class="card__content--container | flow">
+          <h2 class="card__title">STAFF AUGMENTATION</h2>
+          <p class="card__description">
+            Staff augmentations are a new trend that will help you focus more on your main company while
+            reducing the hassle of hiring and finding the suitable workers </p>
+        </div>
+      </div>
+    </article>
+    <!--  -->
+    <article class="card">
+      <img class="card__background" src="assets/images/back2.png"
+        alt="Photo of Cartagena's cathedral at the background and some colonial style houses" width="1920"
+        height="2193" />
+      <div class="card__content | flow">
+        <div class="card__content--container | flow">
+          <h2 class="card__title">DIGITAL TRANSFORMATION</h2>
+          <p class="card__description">
+            We live in the digital world, and digitalization is no longer optional; it is essential for any
+            organization to remain competitive. </p>
+        </div>
+      </div>
+    </article>
+    <!--  -->
+    <article class="card">
+      <img class="card__background" src="assets/images/back3.png"
+        alt="Photo of Cartagena's cathedral at the background and some colonial style houses" width="1920"
+        height="2193" />
+      <div class="card__content | flow">
+        <div class="card__content--container | flow">
+          <h2 class="card__title">TELECOM SERVICES SALES</h2>
+          <p class="card__description">
+            Providing high-end telecom solutions and services from our partners offered us the benefit of
+            improving telecom providers' telecom services and hosting </p>
+        </div>
+      </div>
+    </article>
+
+
+
+  </div>
+
+
+  <div class="product" id="section3">
+    <h4>
+      03
+    </h4>
+    <h5>
+      Industries
+
+    </h5>
+    <div class="process">
+      <ul>
+        <li class="booking-card" style="background-image: url(assets/images/pexels-evg-kowalievska-1148957.jpg)">
+          <div class="book-container">
+            <div class="content">
+              <h6 class="btn1">Montowear</h6>
             </div>
-        </article>
-        <!--  -->
-        <article class="card">
-            <img class="card__background" src="assets/images/back2.png"
-                alt="Photo of Cartagena's cathedral at the background and some colonial style houses" width="1920"
-                height="2193" />
-            <div class="card__content | flow">
-                <div class="card__content--container | flow">
-                    <h2 class="card__title">DIGITAL TRANSFORMATION</h2>
-                    <p class="card__description">
-                        We live in the digital world, and digitalization is no longer optional; it is essential for any
-                        organization to remain competitive. </p>
+          </div>
+          <div class="informations-container">
+            <p class="sub-title">Since the beginning, we at MontoWear have been working hard to bring you beautiful ,
+              trendy, and sexy apparel , Practical, interesting and convenient. </p>
+            <div class="more-information">
+              <div class="info-and-date-container">
+                <div class="box info">
+                  <p><a href="https://www.montowear.com/">www.montowear.com</a></p>
                 </div>
+              </div>
+              <p class="disclaimer"><img src="assets/images/product1.png" alt=""></p>
             </div>
-        </article>
-        <!--  -->
-        <article class="card">
-            <img class="card__background" src="assets/images/back3.png"
-                alt="Photo of Cartagena's cathedral at the background and some colonial style houses" width="1920"
-                height="2193" />
-            <div class="card__content | flow">
-                <div class="card__content--container | flow">
-                    <h2 class="card__title">TELECOM SERVICES SALES</h2>
-                    <p class="card__description">
-                        Providing high-end telecom solutions and services from our partners offered us the benefit of
-                        improving telecom providers' telecom services and hosting </p>
+          </div>
+        </li>
+        <li class="booking-card" style="background-image: url(assets/images/lorenzo-herrera-p0j-mE6mGo4-unsplash.jpg);">
+          <div class="book-container">
+            <div class="content">
+              <h6 class="btn2">Montotek</h6>
+
+            </div>
+          </div>
+          <div class="informations-container">
+            <p class="sub-title">From all different types of gadgets and accessories to tablets mobile phones – we give
+              you access to everything you need and want.</p>
+            <div class="more-information">
+              <div class="info-and-date-container">
+                <div class="box info">
+                  <p><a href="https://www.montotek.com/">www.montotek.com</a></p>
+
                 </div>
+              </div>
+              <p class="disclaimer"><img src="assets/images/product2.png" alt=""></p>
             </div>
-        </article>
+          </div>
+        </li>
+        <li class="booking-card" style="background-image: url(assets/images/pexels-george-dolgikh-1303087.jpg);">
+          <div class="book-container">
+            <div class="content">
+              <h6 class="btn3">YallaGift</h6>
+            </div>
+          </div>
+          <div class="informations-container">
+            <p class="sub-title">YallaGift is an online gifting e-store. It aims to make gifting high quality products
+              easier for our clients to prove their , love, and respect to their beloved ones.</p>
+            <div class="more-information">
+              <div class="info-and-date-container">
+                <div class="box info">
+                  <p><a href="https://yallagift.com/">yallagift.com</a></p>
 
-
-
-    </div>
-
-
-    <div class="product" id="section3">
-        <h4>
-            03
-        </h4>
-        <h5>
-            Industries
-
-        </h5>
-        <div class="process">
-            <ul>
-                <li class="booking-card" style="background-image: url(assets/images/pexels-evg-kowalievska-1148957.jpg)">
-                  <div class="book-container">
-                    <div class="content">
-                      <h6 class="btn1">Montowear</h6>
-                    </div>
+                </div>
+              </div>
+              <p class="disclaimer"><img src="assets/images/product3.png"></p>
+            </div>
+          </div>
+        </li>
+        <li class="booking-card" style="background-image: url(assets/images/yallagymBK.jpg);">
+          <div class="book-container">
+            <div class="content">
+              <h6 class="btn4">YallaGym</h6>
+            </div>
+          </div>
+          <div class="informations-container">
+            <p class="sub-title">YallaGYM is an mobile App for the greater Middle East region, aiming to provide Gym
+              visitors and users with on-demand access to their preferred GYM and Fitness Centers. </p>
+            <div class="more-information">
+              <div class="info-and-date-container">
+                <div class="box info">
+                  <div class="icon">
+                    <img src="assets/icons/playstore.png">
                   </div>
-                  <div class="informations-container">
-                    <p class="sub-title">Since the beginning, we at MontoWear have been working hard to bring you beautiful , trendy, and sexy apparel , Practical, interesting and convenient. </p>
-                    <div class="more-information">
-                      <div class="info-and-date-container">
-                        <div class="box info">
-                          <p><a href="https://www.montowear.com/">www.montowear.com</a></p>
-                        </div>
-                      </div>
-                      <p class="disclaimer"><img src="assets/images/product1.png" alt=""></p>
-                    </div>
+                  <p><a href="https://play.google.com/store/apps/details?id=com.yallagym">Download</a></p>
+
+                </div>
+                <div class="box date">
+                  <div class="icon">
+                    <img src="assets/icons/app-store.png">
                   </div>
-                </li>
-                <li class="booking-card" style="background-image: url(assets/images/lorenzo-herrera-p0j-mE6mGo4-unsplash.jpg);">
-                  <div class="book-container">
-                    <div class="content">
-                        <h6 class="btn2">Montotek</h6>
+                  <p><a href="https://apps.apple.com/jo/app/yalla-gym/id1504220437">Get</a></p>
 
-                    </div>
-                  </div>
-                  <div class="informations-container">
-                    <p class="sub-title">From all different types of gadgets and accessories to tablets mobile phones – we give you access to everything you need and want.</p>
-                    <div class="more-information">
-                      <div class="info-and-date-container">
-                        <div class="box info">
-                            <p><a href="https://www.montotek.com/">www.montotek.com</a></p>
+                </div>
+              </div>
+              <p class="disclaimer"><img src="assets/images/product4.png" alt=""></p>
+            </div>
+          </div>
+        </li>
+      </ul>
 
-                        </div>
-                      </div>
-                      <p class="disclaimer"><img src="assets/images/product2.png" alt=""></p>
-                    </div>
-                  </div>
-                </li>
-                <li class="booking-card" style="background-image: url(assets/images/pexels-george-dolgikh-1303087.jpg);">
-                  <div class="book-container">
-                    <div class="content">
-                        <h6 class="btn3">YallaGift</h6>
-                    </div>
-                  </div>
-                  <div class="informations-container">
-                    <p class="sub-title">YallaGift is an online gifting e-store. It aims to make gifting high quality products easier for our clients to prove their , love, and respect to their beloved ones.</p>
-                    <div class="more-information">
-                      <div class="info-and-date-container">
-                        <div class="box info">
-                            <p><a href="https://yallagift.com/">yallagift.com</a></p>
+      <style>
+        ul {
+          display: flex;
+          flex-wrap: wrap;
+          list-style: none;
+          padding: 0;
+          margin: auto;
+          justify-content: space-evenly;
+        }
 
-                        </div>
-                      </div>
-                      <p class="disclaimer"><img src="assets/images/product3.png"></p>
-                    </div>
-                  </div>
-                </li>
-                <li class="booking-card" style="background-image: url(assets/images/yallagymBK.jpg);">
-                  <div class="book-container">
-                    <div class="content">
-                        <h6 class="btn4">YallaGym</h6>
-                    </div>
-                  </div>
-                  <div class="informations-container">
-                    <p class="sub-title">YallaGYM is an mobile App for the greater Middle East region, aiming to provide Gym visitors and users with on-demand access to their preferred GYM and Fitness Centers. </p>
-                    <div class="more-information">
-                      <div class="info-and-date-container">
-                        <div class="box info">
-                          <div class="icon">
-                            <img src="assets/icons/playstore.png">
-                          </div>
-                          <p><a href="https://play.google.com/store/apps/details?id=com.yallagym">Download</a></p>
+        ul .booking-card {
+          position: relative;
+          width: 300px;
+          display: flex;
+          flex: 0 0 300px;
+          flex-direction: column;
+          margin: 20px;
+          margin-bottom: 30px;
+          -webkit-border-radius: 10px;
+          -moz-border-radius: 10px;
+          border-radius: 10px;
+          overflow: hidden;
+          background-position: center center;
+          background-size: cover;
+          text-align: center;
+          color: #0a4870;
+          transition: 0.3s;
+        }
 
-                        </div>
-                        <div class="box date">
-                            <div class="icon">
-                                <img src="assets/icons/app-store.png">
-                              </div>
-                              <p><a href="https://apps.apple.com/jo/app/yalla-gym/id1504220437">Get</a></p>
+        ul .booking-card::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(10, 72, 112, 0);
+          transition: 0.3s;
+        }
 
-                            </div>
-                      </div>
-                      <p class="disclaimer"><img src="assets/images/product4.png" alt=""></p>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-              
-                <style>
-                    ul {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  padding: 0;
-  margin: auto;
-  justify-content: space-evenly;
-}
+        ul .booking-card .book-container {
+          height: 200px;
+        }
 
-ul .booking-card {
-  position: relative;
-  width: 300px;
-  display: flex;
-  flex: 0 0 300px;
-  flex-direction: column;
-  margin: 20px;
-  margin-bottom: 30px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-  overflow: hidden;
-  background-position: center center;
-  background-size: cover;
-  text-align: center;
-  color: #0a4870;
-  transition: 0.3s;
-}
-ul .booking-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(10, 72, 112, 0);
-  transition: 0.3s;
-}
-ul .booking-card .book-container {
-  height: 200px;
-}
-ul .booking-card .book-container .content {
-  position: relative;
-  opacity: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  transform: translateY(-200px);
-  transition: 0.3s;
-}
-ul .booking-card .book-container .content .btn1 {
-  padding: 10px 15px;
-  text-transform: uppercase;
-  font-weight: 500;
-  font-size: 35px;
-  color: white;
-  cursor: auto;
-  transition: 0.3s;
-}
-ul .booking-card .book-container .content .btn2 {
-  padding: 10px 15px;
-  text-transform: uppercase;
-  font-weight: 900;
-  font-size: 35px;
-  cursor: auto;
-  transition: 0.3s;
-  color: #537FE7;
-}ul .booking-card .book-container .content .btn3 {
-  padding: 10px 15px;
-  background: none;
-  text-transform: uppercase;
-  font-weight: 500;
-  font-size: 35px;
-  color: white;
-  cursor: auto;
-  transition: 0.3s;
-}ul .booking-card .book-container .content .btn4 {
-  padding: 10px 15px;
-  background: none;
-  text-transform: uppercase;
-  font-weight: bold;
-  font-size: 35px;
-  cursor: auto;
-  transition: 0.3s;
-  text-transform: capitalize;
+        ul .booking-card .book-container .content {
+          position: relative;
+          opacity: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+          width: 100%;
+          transform: translateY(-200px);
+          transition: 0.3s;
+        }
 
-background: linear-gradient(90.38deg, #E9E825 3.24%, #9ECB2F 108.48%);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
-/* text-fill-color: transparent; */
+        ul .booking-card .book-container .content .btn1 {
+          padding: 10px 15px;
+          text-transform: uppercase;
+          font-weight: 500;
+          font-size: 35px;
+          color: white;
+          cursor: auto;
+          transition: 0.3s;
+        }
 
-}
-ul .booking-card .informations-container {
-  flex: 1 0 auto;
-  padding: 20px;
-  background: #f0f0f0;
-  transform: translateY(206px);
-  transition: 0.3s;
-}
-ul .booking-card .informations-container .title {
-  position: relative;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
-  font-weight: bold;
-  font-size: 1.2em;
-}
-ul .booking-card .informations-container .title::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  width: 50px;
-  margin: auto;
-  background: #0a4870;
-}
-ul .booking-card .informations-container .price {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 10px;
-}
-ul .icon img{
-  margin-right: 10px;
-  height: 24px;
-  width: 24px;
-  margin: auto;
-}
+        ul .booking-card .book-container .content .btn2 {
+          padding: 10px 15px;
+          text-transform: uppercase;
+          font-weight: 900;
+          font-size: 35px;
+          cursor: auto;
+          transition: 0.3s;
+          color: #537FE7;
+        }
 
-ul .booking-card .informations-container .more-information {
-  opacity: 0;
-  transition: 0.3s;
-}
-ul .booking-card .informations-container .more-information .info-and-date-container {
-  display: flex;
-}
-ul .booking-card .informations-container .more-information .info-and-date-container .box {
-  flex: 1 0;
-  padding: 15px;
-  margin-top: 20px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-  background: white;
-  font-weight: bold;
-  font-size: 0.9em;
-}
-ul .booking-card .informations-container .more-information .info-and-date-container .box .icon {
-  margin-bottom: 5px;
-}
-ul .booking-card .informations-container .more-information .info-and-date-container .box.info {
-  color: #ec992c;
-  margin-right: 10px;
-}
-ul .informations-container a{
-  color: #ec992c;
-  text-decoration: none;
-}
+        ul .booking-card .book-container .content .btn3 {
+          padding: 10px 15px;
+          background: none;
+          text-transform: uppercase;
+          font-weight: 500;
+          font-size: 35px;
+          color: white;
+          cursor: auto;
+          transition: 0.3s;
+        }
 
-ul .booking-card .informations-container .more-information .disclaimer img {
-  margin-top: 20px;
-  font-size: 0.8em;
-  color: #7d7d7d;
-  width: 120px;
-  height: 100px;
-  object-fit: contain;
-}
-ul .booking-card:hover::before {
-  /* background: #7d7d7d; */
-  /* From https://css.glass */
-/* From https://css.glass */
-/* From https://css.glass */
-/* From https://css.glass */
-/* From https://css.glass */
-background: rgba(0, 0, 0, 0.21);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(2.8px);
--webkit-backdrop-filter: blur(2.8px);}
-ul .booking-card:hover .book-container .content {
-  opacity: 1;
-  transform: translateY(0px);
-}
-ul .booking-card:hover .informations-container {
-  transform: translateY(0px);
-}
-ul .booking-card:hover .informations-container .more-information {
-  opacity: 1;
-}
+        ul .booking-card .book-container .content .btn4 {
+          padding: 10px 15px;
+          background: none;
+          text-transform: uppercase;
+          font-weight: bold;
+          font-size: 35px;
+          cursor: auto;
+          transition: 0.3s;
+          text-transform: capitalize;
 
-@media (max-width: 768px) {
-  ul .booking-card::before {
-    background: rgba(10, 72, 112, 0.6);
-  }
-  ul .booking-card .book-container .content {
-    opacity: 1;
-    transform: translateY(0px);
-  }
-  ul .booking-card .informations-container {
-    transform: translateY(0px);
-  }
-  ul .booking-card .informations-container .more-information {
-    opacity: 1;
-  }
-}
-.credits {
-  display: table;
-  background: #0a4870;
-  color: white;
-  line-height: 25px;
-  margin: 10px auto;
-  padding: 20px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  border-radius: 10px;
-  text-align: center;
-}
-.credits a {
-  color: #e3ebf1;
-}
+          background: linear-gradient(90.38deg, #E9E825 3.24%, #9ECB2F 108.48%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          /* text-fill-color: transparent; */
 
-h1 {
-  margin: 10px 20px;
-}
-                </style>              
-            <!-- <div id="scene">
+        }
+
+        ul .booking-card .informations-container {
+          flex: 1 0 auto;
+          padding: 20px;
+          background: #f0f0f0;
+          transform: translateY(206px);
+          transition: 0.3s;
+        }
+
+        ul .booking-card .informations-container .title {
+          position: relative;
+          padding-bottom: 10px;
+          margin-bottom: 10px;
+          font-weight: bold;
+          font-size: 1.2em;
+        }
+
+        ul .booking-card .informations-container .title::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 3px;
+          width: 50px;
+          margin: auto;
+          background: #0a4870;
+        }
+
+        ul .booking-card .informations-container .price {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-top: 10px;
+        }
+
+        ul .icon img {
+          margin-right: 10px;
+          height: 24px;
+          width: 24px;
+          margin: auto;
+        }
+
+        ul .booking-card .informations-container .more-information {
+          opacity: 0;
+          transition: 0.3s;
+        }
+
+        ul .booking-card .informations-container .more-information .info-and-date-container {
+          display: flex;
+        }
+
+        ul .booking-card .informations-container .more-information .info-and-date-container .box {
+          flex: 1 0;
+          padding: 15px;
+          margin-top: 20px;
+          -webkit-border-radius: 10px;
+          -moz-border-radius: 10px;
+          border-radius: 10px;
+          background: white;
+          font-weight: bold;
+          font-size: 0.9em;
+        }
+
+        ul .booking-card .informations-container .more-information .info-and-date-container .box .icon {
+          margin-bottom: 5px;
+        }
+
+        ul .booking-card .informations-container .more-information .info-and-date-container .box.info {
+          color: #ec992c;
+          margin-right: 10px;
+        }
+
+        ul .informations-container a {
+          color: #ec992c;
+          text-decoration: none;
+        }
+
+        ul .booking-card .informations-container .more-information .disclaimer img {
+          margin-top: 20px;
+          font-size: 0.8em;
+          color: #7d7d7d;
+          width: 120px;
+          height: 100px;
+          object-fit: contain;
+        }
+
+        ul .booking-card:hover::before {
+          /* background: #7d7d7d; */
+          /* From https://css.glass */
+          /* From https://css.glass */
+          /* From https://css.glass */
+          /* From https://css.glass */
+          /* From https://css.glass */
+          background: rgba(0, 0, 0, 0.21);
+          border-radius: 16px;
+          box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+          backdrop-filter: blur(2.8px);
+          -webkit-backdrop-filter: blur(2.8px);
+        }
+
+        ul .booking-card:hover .book-container .content {
+          opacity: 1;
+          transform: translateY(0px);
+        }
+
+        ul .booking-card:hover .informations-container {
+          transform: translateY(0px);
+        }
+
+        ul .booking-card:hover .informations-container .more-information {
+          opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+          ul .booking-card::before {
+            background: rgba(10, 72, 112, 0.6);
+          }
+
+          ul .booking-card .book-container .content {
+            opacity: 1;
+            transform: translateY(0px);
+          }
+
+          ul .booking-card .informations-container {
+            transform: translateY(0px);
+          }
+
+          ul .booking-card .informations-container .more-information {
+            opacity: 1;
+          }
+        }
+
+        .credits {
+          display: table;
+          background: #0a4870;
+          color: white;
+          line-height: 25px;
+          margin: 10px auto;
+          padding: 20px;
+          -webkit-border-radius: 10px;
+          -moz-border-radius: 10px;
+          border-radius: 10px;
+          text-align: center;
+        }
+
+        .credits a {
+          color: #e3ebf1;
+        }
+
+        h1 {
+          margin: 10px 20px;
+        }
+      </style>
+      <!-- <div id="scene">
                 <div id="left-zone">
                     <ul class="list">
                         <li class="item">
@@ -939,112 +960,112 @@ h1 {
                 <div id="right-zone"></div>
             </div> -->
 
+    </div>
+
+
+
+  </div>
+  <div class="carousal">
+    <h4>
+      04
+    </h4>
+    <h5>
+      Business Process
+
+    </h5>
+    <div class="carousal-slider">
+      <div class="carousal-border">
+        <div class="background1">
+          <h1>Explore</h1>
+
+          <div class="carousal1">
+            <img src="assets/images/bac1.jpeg">
+          </div>
+          <p>Explore, discuss, <br> understand and assess <br> the client requirements</p>
+
         </div>
+
+      </div>
+      <div class="carousal-border">
+        <div class="background2">
+          <h1>Act</h1>
+
+          <div class="carousal2">
+            <img src="assets/images/bac2.jpeg">
+          </div>
+          <p>Envelope our offer and <br> discover the extra value <br> from that offer.</p>
+
+        </div>
+      </div>
+
+      <div class="carousal-border">
+        <div class="background3">
+          <h1>Agreement</h1>
+
+          <div class="carousal3">
+            <img src="assets/images/bac3.jpeg">
+          </div>
+          <p>All terms and conditions, <br> including needed abilities <br> and job descriptions, must <br> be
+            agreed upon.
+          </p>
+
+        </div>
+
+      </div>
+      <div class="carousal-border">
+        <div class="background4">
+          <h1>Avail and Assure</h1>
+
+          <div class="carousal4">
+            <img src="assets/images/bac4.jpeg">
+          </div>
+          <p>Focusing on avail and assure is <br> crucial for a business process solution <br> that meets
+            customer needs, <br> drives long-term success, <br> with quality control, customer <br> service,
+            and
+            ongoing improvement
+          </p>
+
+        </div>
+
+      </div>
+
 
 
 
     </div>
-    <div class="carousal">
-        <h4>
-            04
-        </h4>
-        <h5>
-            Business Process
-
-        </h5>
-        <div class="carousal-slider">
-            <div class="carousal-border">
-                <div class="background1">
-                    <h1>Explore</h1>
-
-                    <div class="carousal1">
-                        <img src="assets/images/bac1.jpeg">
-                    </div>
-                    <p>Explore, discuss, <br> understand and assess <br> the client requirements</p>
-
-                </div>
-
-            </div>
-            <div class="carousal-border">
-                <div class="background2">
-                    <h1>Act</h1>
-
-                    <div class="carousal2">
-                        <img src="assets/images/bac2.jpeg">
-                    </div>
-                    <p>Envelope our offer and <br> discover the extra value <br> from that offer.</p>
-
-                </div>
-            </div>
-
-            <div class="carousal-border">
-                <div class="background3">
-                    <h1>Agreement</h1>
-
-                    <div class="carousal3">
-                        <img src="assets/images/bac3.jpeg">
-                    </div>
-                    <p>All terms and conditions, <br> including needed abilities <br> and job descriptions, must <br> be
-                        agreed upon.
-                    </p>
-
-                </div>
-
-            </div>
-            <div class="carousal-border">
-                <div class="background4">
-                    <h1>Avail and Assure</h1>
-
-                    <div class="carousal4">
-                        <img src="assets/images/bac4.jpeg">
-                    </div>
-                    <p>Focusing on avail and assure is <br> crucial for a business process solution <br> that meets
-                        customer needs, <br> drives long-term success, <br> with quality control, customer <br> service,
-                        and
-                        ongoing improvement
-                    </p>
-
-                </div>
-
-            </div>
+  </div>
 
 
+  <!-- Our partners -->
+  <div class="our-partners">
+    <h4>
+      05
+    </h4>
+    <h5>
+      Our Partners
+    </h5>
+    <div class="partners">
+      <div class="partner-images">
+        <img src="assets/images/naitel.png">
+        <img src="assets/images/inovar.png">
+        <img src="assets/images/1621846158523.jpg">
+        <img src="assets/images/Final-SKY-PEAK-Logo (1).png">
+        <img src="assets/images/Logo-VOX-Solutions1-4 (1).png">
 
 
-        </div>
-    </div>
-
-
-    <!-- Our partners -->
-    <div class="our-partners">
-        <h4>
-            05
-        </h4>
-        <h5>
-            Our Partners
-        </h5>
-        <div class="partners">
-            <div class="partner-images">
-                <img src="assets/images/naitel.png">
-                <img src="assets/images/inovar.png">
-                <img src="assets/images/1621846158523.jpg">
-                <img src="assets/images/Final-SKY-PEAK-Logo (1).png">
-                <img src="assets/images/Logo-VOX-Solutions1-4 (1).png">
-
-
-            </div>
-
-        </div>
+      </div>
 
     </div>
-    <div class="our-client">
-        <h4>
-            06
-        </h4>
-        <h5>
-            Our Clients
-        </h5>
-        <!-- <div class="client">
+
+  </div>
+  <div class="our-client">
+    <h4>
+      06
+    </h4>
+    <h5>
+      Our Clients
+    </h5>
+    <!-- <div class="client">
             <div class="partner-images">
                 <img src="assets/images/naitel.png">
                 <img src="assets/images/inovar.png">
@@ -1055,323 +1076,323 @@ h1 {
 
         </div> -->
 
-    </div>
+  </div>
 
 
-    <style>
-        
-        #filters {
-            height: 10px;
-            width: 10px;
-        }
-        .carousal-slider {
+  <style>
+    #filters {
+      height: 10px;
+      width: 10px;
+    }
 
-            overflow-x: scroll;
-            overflow-y: hidden;
-            white-space: nowrap;
-            -webkit-overflow-scrolling: touch;
+    .carousal-slider {
 
-            margin-bottom: 150px;
-            position: relative;
-            display: flex;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
 
-        }
+      margin-bottom: 150px;
+      position: relative;
+      display: flex;
 
-        @media screen and (max-width: 500px) {
-            .carousal-slider .carousal-border {
-                height: 490px;
-                width: 300px;
-                /* padding-top: 10px; */
-                position: relative;
-                margin: 10px;
-            }
+    }
 
-            .carousal-slider .carousal-border .background1 {
-                height: 400px;
-                width: 300px;
-                background-color: black;
-                position: relative;
-                bottom: 0;
-                top: 40px;
-            }
+    @media screen and (max-width: 500px) {
+      .carousal-slider .carousal-border {
+        height: 490px;
+        width: 300px;
+        /* padding-top: 10px; */
+        position: relative;
+        margin: 10px;
+      }
 
-            .carousal-slider .carousal-border .background2 {
-                height: 400px;
-                width: 300px;
-                background-color: #9ED4D4;
-                position: relative;
-                bottom: 0;
-                top: 40px;
-            }
+      .carousal-slider .carousal-border .background1 {
+        height: 400px;
+        width: 300px;
+        background-color: black;
+        position: relative;
+        bottom: 0;
+        top: 40px;
+      }
 
-            .carousal-slider .carousal-border .background3 {
-                height: 400px;
-                width: 300px;
-                background-color: black;
-                position: relative;
-                bottom: 0;
-                top: 40px;
-            }
+      .carousal-slider .carousal-border .background2 {
+        height: 400px;
+        width: 300px;
+        background-color: #9ED4D4;
+        position: relative;
+        bottom: 0;
+        top: 40px;
+      }
 
-            .carousal-slider .carousal-border .background4 {
-                height: 400px;
-                width: 300px;
-                background-color: #9ED4D4;
-                position: relative;
-                bottom: 0;
-                top: 40px;
-            }
+      .carousal-slider .carousal-border .background3 {
+        height: 400px;
+        width: 300px;
+        background-color: black;
+        position: relative;
+        bottom: 0;
+        top: 40px;
+      }
 
-            .background4 p {
-                text-align: start;
-                font-size: 12px;
-                width: 270px;
-                padding: 10px;
-            }
+      .carousal-slider .carousal-border .background4 {
+        height: 400px;
+        width: 300px;
+        background-color: #9ED4D4;
+        position: relative;
+        bottom: 0;
+        top: 40px;
+      }
+
+      .background4 p {
+        text-align: start;
+        font-size: 12px;
+        width: 270px;
+        padding: 10px;
+      }
 
 
 
-            .carousal-slider .carousal1 img {
-                width: 221px;
-                height: 201px;
-                background-size: cover;
-                margin-left: 40.5px;
-                border-radius: 5px;
-                position: absolute;
-                top: 50px;
+      .carousal-slider .carousal1 img {
+        width: 221px;
+        height: 201px;
+        background-size: cover;
+        margin-left: 40.5px;
+        border-radius: 5px;
+        position: absolute;
+        top: 50px;
 
-            }
+      }
 
-            .carousal-slider .carousal-border h1 {
-                color: #11999E;
-                font-weight: 900;
-                font-size: 40px;
-                position: relative;
-                top: -25px;
-                text-align: center;
-            }
+      .carousal-slider .carousal-border h1 {
+        color: #11999E;
+        font-weight: 900;
+        font-size: 40px;
+        position: relative;
+        top: -25px;
+        text-align: center;
+      }
 
-            .carousal-slider .carousal-border p {
-                /* position: absolute; */
-                /* width: 290px; */
-                color: #F5F5F5;
-                /* margin: 5px; */
-                /* padding-top: 30px; */
-                font-size: 3.4vw;
-                text-align: center;
-                /* position: absolute;
+      .carousal-slider .carousal-border p {
+        /* position: absolute; */
+        /* width: 290px; */
+        color: #F5F5F5;
+        /* margin: 5px; */
+        /* padding-top: 30px; */
+        font-size: 3.4vw;
+        text-align: center;
+        /* position: absolute;
             bottom: 35px; */
-                word-wrap: normal;
-                margin-top: 220px;
+        word-wrap: normal;
+        margin-top: 220px;
 
-            }
+      }
 
-            .carousal-slider .carousal2 img {
-                width: 221px;
-                height: 201px;
-                background-size: cover;
-                margin-left: 40.5px;
-                border-radius: 5px;
-                position: absolute;
-                top: 50px;
-
-
-            }
-
-            .carousal-slider .carousal3 img {
-                width: 221px;
-                height: 201px;
-                background-size: cover;
-                margin-left: 40.5px;
-                border-radius: 5px;
-                position: absolute;
-                top: 50px;
+      .carousal-slider .carousal2 img {
+        width: 221px;
+        height: 201px;
+        background-size: cover;
+        margin-left: 40.5px;
+        border-radius: 5px;
+        position: absolute;
+        top: 50px;
 
 
-            }
+      }
 
-            .carousal-slider .carousal4 img {
-                width: 221px;
-                height: 201px;
-                background-size: cover;
-                margin-left: 40.5px;
-                border-radius: 5px;
-                position: absolute;
-                top: 50px;
-
-
-            }
+      .carousal-slider .carousal3 img {
+        width: 221px;
+        height: 201px;
+        background-size: cover;
+        margin-left: 40.5px;
+        border-radius: 5px;
+        position: absolute;
+        top: 50px;
 
 
+      }
+
+      .carousal-slider .carousal4 img {
+        width: 221px;
+        height: 201px;
+        background-size: cover;
+        margin-left: 40.5px;
+        border-radius: 5px;
+        position: absolute;
+        top: 50px;
 
 
-
-
-        }
-
-        @media screen and (min-width: 501px) {
-            .carousal-slider .carousal-border {
-                height: 740px;
-                width: 600px;
-                /* padding-top: 10px; */
-                position: relative;
-                margin: 10px;
-            }
-
-            .carousal-slider .carousal-border .background1 {
-                height: 725px;
-                width: 600px;
-                background-color: black;
-                position: relative;
-                bottom: 0;
-                top: 40px;
-            }
-
-            .carousal-slider .carousal1 img {
-                width: 421px;
-                height: 401px;
-                background-size: cover;
-                margin-left: 89.5px;
-                border-radius: 5px;
-                position: absolute;
-                top: 50px;
-
-            }
-
-            .carousal-slider .carousal-border .background2 {
-                height: 705px;
-                width: 600px;
-                background-color: #9ED4D4;
-                position: relative;
-                bottom: 0;
-                bottom: -45px;
-
-            }
-
-            .carousal-slider .carousal-border .background3 {
-                height: 705px;
-                width: 600px;
-                background-color: black;
-                position: relative;
-                bottom: -45px;
-
-            }
-
-            .carousal-slider .carousal-border .background4 {
-                height: 705px;
-                width: 600px;
-                background-color: #9ED4D4;
-                position: relative;
-                bottom: 0;
-                bottom: -45px;
-
-            }
-
-            .carousal-slider .carousal-border h1 {
-                color: #11999E;
-                font-weight: 900;
-                font-size: 60px;
-                position: relative;
-                top: -45px;
-                text-align: center;
-            }
-
-            .carousal-slider .carousal-border p {
-                /* position: absolute; */
-                width: 100%;
-                color: #F5F5F5;
-                /* bottom: 25px; */
-                /* padding-top: 30px; */
-                font-size: 19px;
-                text-align: center;
-                position: absolute;
-                bottom: 92px;
-                word-wrap: initial;
-
-            }
-
-            .carousal-slider .carousal2 img {
-                width: 421px;
-                height: 401px;
-                background-size: cover;
-                margin-left: 89.5px;
-                border-radius: 5px;
-                position: absolute;
-                top: 50px;
-
-
-            }
-
-            .carousal-slider .carousal3 img {
-                width: 421px;
-                height: 401px;
-                background-size: cover;
-                margin-left: 89.5px;
-                border-radius: 5px;
-                position: absolute;
-                top: 50px;
-
-
-            }
-
-            .carousal-slider .carousal4 img {
-                width: 421px;
-                height: 401px;
-                background-size: cover;
-                margin-left: 89.5px;
-                border-radius: 5px;
-                position: absolute;
-                top: 50px;
-
-
-            }
-
-            .background4 p {
-                text-align: start;
-                font-size: 12px;
-                width: 100%;
-                /* padding: 10px; */
-            }
+      }
 
 
 
 
 
 
+    }
 
-        }
-    </style>
-   
+    @media screen and (min-width: 501px) {
+      .carousal-slider .carousal-border {
+        height: 740px;
+        width: 600px;
+        /* padding-top: 10px; */
+        position: relative;
+        margin: 10px;
+      }
+
+      .carousal-slider .carousal-border .background1 {
+        height: 725px;
+        width: 600px;
+        background-color: black;
+        position: relative;
+        bottom: 0;
+        top: 40px;
+      }
+
+      .carousal-slider .carousal1 img {
+        width: 421px;
+        height: 401px;
+        background-size: cover;
+        margin-left: 89.5px;
+        border-radius: 5px;
+        position: absolute;
+        top: 50px;
+
+      }
+
+      .carousal-slider .carousal-border .background2 {
+        height: 705px;
+        width: 600px;
+        background-color: #9ED4D4;
+        position: relative;
+        bottom: 0;
+        bottom: -45px;
+
+      }
+
+      .carousal-slider .carousal-border .background3 {
+        height: 705px;
+        width: 600px;
+        background-color: black;
+        position: relative;
+        bottom: -45px;
+
+      }
+
+      .carousal-slider .carousal-border .background4 {
+        height: 705px;
+        width: 600px;
+        background-color: #9ED4D4;
+        position: relative;
+        bottom: 0;
+        bottom: -45px;
+
+      }
+
+      .carousal-slider .carousal-border h1 {
+        color: #11999E;
+        font-weight: 900;
+        font-size: 60px;
+        position: relative;
+        top: -45px;
+        text-align: center;
+      }
+
+      .carousal-slider .carousal-border p {
+        /* position: absolute; */
+        width: 100%;
+        color: #F5F5F5;
+        /* bottom: 25px; */
+        /* padding-top: 30px; */
+        font-size: 19px;
+        text-align: center;
+        position: absolute;
+        bottom: 92px;
+        word-wrap: initial;
+
+      }
+
+      .carousal-slider .carousal2 img {
+        width: 421px;
+        height: 401px;
+        background-size: cover;
+        margin-left: 89.5px;
+        border-radius: 5px;
+        position: absolute;
+        top: 50px;
 
 
-    <!-- Footer -->
-    <footer class="footer">
-        <!-- <div class="line"></div> -->
-        <!-- <h1>
+      }
+
+      .carousal-slider .carousal3 img {
+        width: 421px;
+        height: 401px;
+        background-size: cover;
+        margin-left: 89.5px;
+        border-radius: 5px;
+        position: absolute;
+        top: 50px;
+
+
+      }
+
+      .carousal-slider .carousal4 img {
+        width: 421px;
+        height: 401px;
+        background-size: cover;
+        margin-left: 89.5px;
+        border-radius: 5px;
+        position: absolute;
+        top: 50px;
+
+
+      }
+
+      .background4 p {
+        text-align: start;
+        font-size: 12px;
+        width: 100%;
+        /* padding: 10px; */
+      }
+
+
+
+
+
+
+
+    }
+  </style>
+
+
+
+  <!-- Footer -->
+  <footer class="footer">
+    <!-- <div class="line"></div> -->
+    <!-- <h1>
             open sky
         </h1> -->
-        <div class="arrow">
-            <img src="assets/icons/up-arrow.png">
-        </div>
+    <div class="arrow">
+      <img src="assets/icons/up-arrow.png">
+    </div>
 
-        <button onclick="topFunction()" id="myBtn" title="Go to top">Go Back To Top </button>
-
-
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Go Back To Top </button>
 
 
 
 
-        <div class="line"></div>
-        <div class="list">
-            <li class="list1">
-                <ul> <a href="#">Terms of Conditions</a></ul>
-                <ul> <a href="#">Privacy Policy </a></ul>
-                <ul> <a href="#">Cookie Preferences</a></ul>
-                <ul> <a href="screens/getintouchPage.html">Get In Touch</a></ul>
-            </li>
-            <li class="list3">
-                <ul> <a href=mailto:info@opensky.jo.com>join with our company to see the future</a></ul>
-                <!-- <form action="post">
+
+
+    <div class="line"></div>
+    <div class="list">
+      <li class="list1">
+        <ul> <a href="#">Terms of Conditions</a></ul>
+        <ul> <a href="#">Privacy Policy </a></ul>
+        <ul> <a href="#">Cookie Preferences</a></ul>
+        <ul> <a href="screens/getintouchPage.html">Get In Touch</a></ul>
+      </li>
+      <li class="list3">
+        <ul> <a href=mailto:info@opensky.jo.com>join with our company to see the future</a></ul>
+        <!-- <form action="post">
                     <input type="text" name="email" id="email" placeholder="E-mail">
 
                 </form>
@@ -1384,31 +1405,29 @@ h1 {
                     <input type="button" value="Send Email" onclick="sendEmail()"/>
                 </form>   -->
 
-                <script>
-                    function sendEmail() {
-                        Email.send({
-                            Host: "smtp.gmail.com",
-                            Username: "<sender’s email address>",
-                            Password: "<email password>",
-                            To: 'ezoahmed5@gmail.com',
-                            From: "salah@gmail.com",
-                            Subject: "Test email",
-                            Body: "<email body>",
-                        }).then(
-                            message => alert("mail sent successfully")
-                        );
-                    }
+        <script>
+          function sendEmail() {
+            Email.send({
+              Host: "smtp.gmail.com",
+              Username: "<sender’s email address>",
+              Password: "<email password>",
+              To: 'ezoahmed5@gmail.com',
+              From: "salah@gmail.com",
+              Subject: "Test email",
+              Body: "<email body>",
+            }).then(
+              message => alert("mail sent successfully")
+            );
+          }
 
-                </script>
-
-
-            </li>
-
-        </div>
-
-    </footer>
+        </script>
 
 
+      </li>
+
+    </div>
+
+  </footer>
 
 
 
@@ -1433,159 +1452,161 @@ h1 {
 
 
 
-    <!--  -->
-    <script>const elts = {
-            text1: document.getElementById("text1"),
-            text2: document.getElementById("text2")
-        };
 
-        const texts = [
-            "Vision",
-            "Mission",
-            "Value",
-        ];
 
-        const morphTime = 3;
-        const cooldownTime = 0.5;
+  <!--  -->
+  <script>const elts = {
+      text1: document.getElementById("text1"),
+      text2: document.getElementById("text2")
+    };
 
-        let textIndex = texts.length - 1;
-        let time = new Date();
-        let morph = 0;
-        let cooldown = cooldownTime;
+    const texts = [
+      "Vision",
+      "Mission",
+      "Value",
+    ];
 
-        elts.text1.textContent = texts[textIndex % texts.length];
-        elts.text2.textContent = texts[(textIndex + 1) % texts.length];
+    const morphTime = 3;
+    const cooldownTime = 0.5;
 
-        function doMorph() {
-            morph -= cooldown;
-            cooldown = 0;
+    let textIndex = texts.length - 1;
+    let time = new Date();
+    let morph = 0;
+    let cooldown = cooldownTime;
 
-            let fraction = morph / morphTime;
+    elts.text1.textContent = texts[textIndex % texts.length];
+    elts.text2.textContent = texts[(textIndex + 1) % texts.length];
 
-            if (fraction > 1) {
-                cooldown = cooldownTime;
-                fraction = 1;
-            }
+    function doMorph() {
+      morph -= cooldown;
+      cooldown = 0;
 
-            setMorph(fraction);
+      let fraction = morph / morphTime;
+
+      if (fraction > 1) {
+        cooldown = cooldownTime;
+        fraction = 1;
+      }
+
+      setMorph(fraction);
+    }
+
+    function setMorph(fraction) {
+      elts.text2.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
+      elts.text2.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
+
+      fraction = 1 - fraction;
+      elts.text1.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
+      elts.text1.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
+
+      elts.text1.textContent = texts[textIndex % texts.length];
+      elts.text2.textContent = texts[(textIndex + 1) % texts.length];
+    }
+
+    function doCooldown() {
+      morph = 0;
+
+      elts.text2.style.filter = "";
+      elts.text2.style.opacity = "100%";
+
+      elts.text1.style.filter = "";
+      elts.text1.style.opacity = "0%";
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+
+      let newTime = new Date();
+      let shouldIncrementIndex = cooldown > 0;
+      let dt = (newTime - time) / 1000;
+      time = newTime;
+
+      cooldown -= dt;
+
+      if (cooldown <= 0) {
+        if (shouldIncrementIndex) {
+          textIndex++;
         }
 
-        function setMorph(fraction) {
-            elts.text2.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
-            elts.text2.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
+        doMorph();
+      } else {
+        doCooldown();
+      }
+    }
 
-            fraction = 1 - fraction;
-            elts.text1.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
-            elts.text1.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
-
-            elts.text1.textContent = texts[textIndex % texts.length];
-            elts.text2.textContent = texts[(textIndex + 1) % texts.length];
-        }
-
-        function doCooldown() {
-            morph = 0;
-
-            elts.text2.style.filter = "";
-            elts.text2.style.opacity = "100%";
-
-            elts.text1.style.filter = "";
-            elts.text1.style.opacity = "0%";
-        }
-
-        function animate() {
-            requestAnimationFrame(animate);
-
-            let newTime = new Date();
-            let shouldIncrementIndex = cooldown > 0;
-            let dt = (newTime - time) / 1000;
-            time = newTime;
-
-            cooldown -= dt;
-
-            if (cooldown <= 0) {
-                if (shouldIncrementIndex) {
-                    textIndex++;
-                }
-
-                doMorph();
-            } else {
-                doCooldown();
-            }
-        }
-
-        animate();
-    </script>
-    <script>
-        var w = window.innerWidth;
-        var flag = document.getElementById("flagShow");
-        if (w<1160) {
-            flag.style.display = "none";
-        }
-        function myFunction() {
-            var c1 = document.getElementById("circle1");
-            var c2 = document.getElementById("circle2");
-            var c3 = document.getElementById("circle3");
-            var btn = document.getElementById("btn");
+    animate();
+  </script>
+  <script>
+    var w = window.innerWidth;
+    var flag = document.getElementById("flagShow");
+    if (w < 1160) {
+      flag.style.display = "none";
+    }
+    function myFunction() {
+      var c1 = document.getElementById("circle1");
+      var c2 = document.getElementById("circle2");
+      var c3 = document.getElementById("circle3");
+      var btn = document.getElementById("btn");
 
 
-            if (c1.style.display === "none") {
-                c1.style.display = "block";
-                c2.style.display = "block";
-                c3.style.display = "block";
-              btn.textContent = 'Close it';
+      if (c1.style.display === "none") {
+        c1.style.display = "block";
+        c2.style.display = "block";
+        c3.style.display = "block";
+        btn.textContent = 'Close it';
 
-            } else {
-                c1.style.display = "none";
-                c2.style.display = "none";
-                c3.style.display = "none";
-                btn.textContent = 'Show Up';
+      } else {
+        c1.style.display = "none";
+        c2.style.display = "none";
+        c3.style.display = "none";
+        btn.textContent = 'Show Up';
 
 
-            }
-        }
-    </script>
-    <script>
-        // Get the button
-        let mybutton = document.getElementById("myBtn");
+      }
+    }
+  </script>
+  <script>
+    // Get the button
+    let mybutton = document.getElementById("myBtn");
 
-        // When the user scrolls down 20px from the top of the document, show the button
-        window.onscroll = function () { scrollFunction() };
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () { scrollFunction() };
 
-        function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                mybutton.style.display = "block";
-            } else {
-                mybutton.style.display = "none";
-            }
-        }
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
 
-        // When the user clicks on the button, scroll to the top of the document
-        function topFunction() {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
-        }
-    </script>
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+  </script>
 
-<script src="https://smtpjs.com/v3/smtp.js">
-</script>
-<input type="button" value="Send Email" onclick="sendEmail()">
+  <script src="https://smtpjs.com/v3/smtp.js">
+  </script>
+  <input type="button" value="Send Email" onclick="sendEmail()">
 
-<script>
+  <script>
     function sendEmail() {
-  Email.send({
-    Host : "smtp.mailtrap.io",
-    Username : "<Mailtrap username>",
-    Password : "<Mailtrap password>",
-    To : 'ezoahmed5@gmail.com',
-    From : "sender@example.com",
-    Subject : "Test email",
-    Body : "<html><h2>Header</h2><strong>Bold text</strong><br></br><em>Italic</em></html>"
-  }).then(
-    message => alert(message)
-  );
-}
+      Email.send({
+        Host: "smtp.mailtrap.io",
+        Username: "<Mailtrap username>",
+        Password: "<Mailtrap password>",
+        To: 'ezoahmed5@gmail.com',
+        From: "sender@example.com",
+        Subject: "Test email",
+        Body: "<html><h2>Header</h2><strong>Bold text</strong><br></br><em>Italic</em></html>"
+      }).then(
+        message => alert(message)
+      );
+    }
 
-</script>
+  </script>
 </body>
 
 </html>
