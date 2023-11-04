@@ -61,6 +61,7 @@
       transition: left 0.3s ease;
       -webkit-box-shadow: 0px 0px 12px 6px rgba(128, 128, 128, 0.6);
       box-shadow: 0px 0px 12px 6px rgba(128, 128, 128, 0.6);
+      z-index: 1;
     }
 
     .wrapper.show {
@@ -1246,116 +1247,8 @@
 
 
   <!--  -->
-  <script>const elts = {
-      text1: document.getElementById("text1"),
-      text2: document.getElementById("text2")
-    };
 
-    const texts = [
-      "Vision",
-      "Mission",
-      "Value",
-    ];
-
-    const morphTime = 3;
-    const cooldownTime = 0.5;
-
-    let textIndex = texts.length - 1;
-    let time = new Date();
-    let morph = 0;
-    let cooldown = cooldownTime;
-
-    elts.text1.textContent = texts[textIndex % texts.length];
-    elts.text2.textContent = texts[(textIndex + 1) % texts.length];
-
-    function doMorph() {
-      morph -= cooldown;
-      cooldown = 0;
-
-      let fraction = morph / morphTime;
-
-      if (fraction > 1) {
-        cooldown = cooldownTime;
-        fraction = 1;
-      }
-
-      setMorph(fraction);
-    }
-
-    function setMorph(fraction) {
-      elts.text2.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
-      elts.text2.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
-
-      fraction = 1 - fraction;
-      elts.text1.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
-      elts.text1.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
-
-      elts.text1.textContent = texts[textIndex % texts.length];
-      elts.text2.textContent = texts[(textIndex + 1) % texts.length];
-    }
-
-    function doCooldown() {
-      morph = 0;
-
-      elts.text2.style.filter = "";
-      elts.text2.style.opacity = "100%";
-
-      elts.text1.style.filter = "";
-      elts.text1.style.opacity = "0%";
-    }
-
-    function animate() {
-      requestAnimationFrame(animate);
-
-      let newTime = new Date();
-      let shouldIncrementIndex = cooldown > 0;
-      let dt = (newTime - time) / 1000;
-      time = newTime;
-
-      cooldown -= dt;
-
-      if (cooldown <= 0) {
-        if (shouldIncrementIndex) {
-          textIndex++;
-        }
-
-        doMorph();
-      } else {
-        doCooldown();
-      }
-    }
-
-    animate();
-  </script>
-  <script>
-    var w = window.innerWidth;
-    var flag = document.getElementById("flagShow");
-    if (w < 1160) {
-      flag.style.display = "none";
-    }
-    function myFunction() {
-      var c1 = document.getElementById("circle1");
-      var c2 = document.getElementById("circle2");
-      var c3 = document.getElementById("circle3");
-      var btn = document.getElementById("btn");
-
-
-      if (c1.style.display === "none") {
-        c1.style.display = "block";
-        c2.style.display = "block";
-        c3.style.display = "block";
-        btn.textContent = 'Close it';
-
-      } else {
-        c1.style.display = "none";
-        c2.style.display = "none";
-        c3.style.display = "none";
-        btn.textContent = 'Show Up';
-
-
-      }
-    }
-  </script>
+  
   <script>
     // Get the button
     let mybutton = document.getElementById("myBtn");

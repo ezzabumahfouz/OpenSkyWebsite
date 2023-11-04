@@ -29,6 +29,17 @@
 }
 
 /* Body */
+.topScroll button {
+  margin: auto;
+  display: block;
+  background-color: transparent;
+  border: 0;
+  text-decoration: underline;
+  font-size: 20px;
+  cursor: pointer;
+  padding-bottom: 29px;
+  padding-top: 50px;
+}
 .rounded {
     border-top: 5px solid #11999e;
     border-radius: 5px;
