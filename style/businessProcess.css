@@ -106,7 +106,7 @@
     font-size: 25px;
   }
   .card {
-    width: 22.5%;
+    width: 24%;
     min-height: 400px;
     background-color: white;
     box-shadow: 2px 2px 0px #11999e, -2px -2px 0px #11999e;
@@ -116,16 +116,16 @@
     align-items: center;
     flex-direction: column;
     text-align: center;
-    color: #a7a9ab;
+    color: #484948;
   }
   .card h2 {
-    font-size: 20px;
+    font-size: 22px;
     text-transform: uppercase;
     margin-bottom: 15px;
     letter-spacing: 1px;
   }
   .card p {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.5;
     padding: 8px;
   }
