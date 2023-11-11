@@ -248,58 +248,6 @@
 
 
 /* Services Style */
-section.services {
-    margin-top: 40px;
-}
-
-.services .service-item {
-    border-radius: 5px;
-    padding: 40px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-    margin-top: 30px;
-}
-
-.services .service-item:hover i {
-    margin-top: 15px;
-}
-
-.services .service-item h4 {
-    font-size: 22px;
-    font-weight: 600;
-    margin-bottom: 20px;
-}
-
-.services .service-item i {
-    transition: all .5s;
-    float: left;
-    font-size: 64px;
-    color: #11999e;
-    margin-bottom: 30px;
-    margin-right: 30px;
-}
-
-/* End */
-
-/* Header */
-.title {
-
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    margin: 0;
-    padding: 18px 0 0 5%;
-}
-
-.title h1 {
-    font-size: 30px;
-    color: #000000;
-    border-right: 4px solid #000;
-    font-weight: 700;
-    animation: forwards typing 7s;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
 @keyframes cursor {
 
     0%,
