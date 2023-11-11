@@ -161,3 +161,51 @@
     }
    }
       
+/* Header */
+.title {
+
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin: 0;
+  padding: 18px 0 0 5%;
+}
+
+.title h1 {
+  font-size: 30px;
+  color: #000000;
+  border-right: 4px solid #000;
+  font-weight: 700;
+  animation: forwards typing 7s;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@keyframes cursor {
+
+  0%,
+  100% {
+      border-color: transparent;
+  }
+
+  50% {
+      border-color: #000;
+  }
+}
+
+@keyframes typing {
+  0% {
+      width: 0ch
+  }
+
+  30%{ width: 16ch;} 
+  80%{ width: 16ch;} 
+   90%{ width: 16ch;} 
+  100% {
+      width: 16ch;
+  }
+
+
+}
+
+/* End Header */
