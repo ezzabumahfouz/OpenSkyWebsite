@@ -172,13 +172,7 @@ footer .line {
   background-color: #100f0f;
   margin: auto;
 }
-footer .arrow img {
-  width: 23px;
-  height: 23px;
-  margin: auto;
-  display: block;
-  margin-top: 200px;
-}
+
 footer button {
   margin: auto;
   display: block;

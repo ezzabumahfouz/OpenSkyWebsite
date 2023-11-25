@@ -2,139 +2,364 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="../style/newsStyle.css">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="x-icon" href="../assets/images/Untitled_design__2_-removebg-preview.png" sizes="16x16">
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="../style/newsStyle.css" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
 
     <title>News | Open Sky</title>
+
+    <!-- Additional things -->
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Additional CSS Files -->
+
+    <!-- End -->
 </head>
 
 <body>
-    <header class="navbar">
+    <div class="navbar">
+        <a href="../index.html"><img class="logo" src="../assets/images/opanSkySoftware.png" /></a>
+        <p>
+            ....................................................................
+        </p>
 
-        <a href="http://localhost/OpenSkyWebsite/index.html"><img class="logo"
-                src="../assets/images/opanSkySoftware.png"></a>
-        <div class="nav-pages">
-            <!-- <div class="dropdown">
-                <button class="dropbtn">About Us
-                    <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-content">
-                    <a href="#">Who we are</a>
-                    <a href="screens/management.html">Management</a>
-                    <a href="#">Technology partners</a>
-                    <a href="#">Location</a>
-                                </div>
-            </div> -->
-
-
-            <a class="hover-underline-animation" href="http://localhost/OpenSkyWebsite/index.html">Home</a>
-            <a class="hover-underline-animation" href="javascript:history.back()">Services</a>
-            <a class="hover-underline-animation" href="javascript:history.back()">Industries</a>
-            <a class="hover-underline-animation" href="news.html">News</a>
-             
-            <a class="hover-underline-animation" href="../screens/carrers.html">Carrers</a>
-
-        </div>
-            <div class="dropdown">
-                <a id="flagShow"><img class="flag" src="../assets/images/jordan (1).png"></a>
-
-            </div>
-
-    </header>
-
-
-    <div class="news">
-        <div class="apply-text">
-            News
-        </div>
-        <div class="news-class">
-            <div class="job">
-                <div class="dev1">
-                    <h2>Partnership With Autosphere</h2>
-                    <span class="p1">
-                        We are thrilled to announce that we have partnered with Autosphere, a leading provider of
-                        Robotic Process Automation (RPA) solutions, to offer customers a unique opportunity to
-                        streamline their business processes.
-
-
-
-                        The partnership combines Open Sky's expertise in information technology with Autosphere's
-                        cutting-edge RPA technology to deliver a powerful solution for businesses looking to automate
-                        their manual processes. This partnership allows businesses to improve their efficiency, reduce
-                        operational costs, and enhance customer satisfaction.
-
-
-
-                        RPA technology automates repetitive, rule-based tasks and processes, freeing up time for
-                        employees to focus on higher-value activities. The combination of RPA technology and information
-                        technology creates a scalable and flexible solution that can be customized to meet the unique
-                        needs of each business.
-
-
-
-                        Open Sky and Autosphere are excited about this partnership and the opportunity to deliver real
-                        value to their customers. They are committed to providing the highest quality of service and
-                        support to ensure the success of their customers.
-
-
-
-                        This partnership is just the latest example of our commitment to providing innovative solutions
-                        to our customers. With our extensive experience in information technology and Autosphere's
-                        expertise in RPA technology, businesses can now take advantage of a powerful solution that will
-                        drive growth and increase efficiency.
-
-                    </span>
-                    <button class="More">...Show More</button>
-
-
-
+        <div class="dropdown">
+            <button class="dropbtn">
+                About
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+                <div class="row">
+                    <div class="column">
+                        <h3>Who we are</h3>
+                        <a href="#">Know More</a>
+                        <a href="#">The Way We Work</a>
+                        <a href="#">Values & Ethics</a>
+                    </div>
+                    <div class="column">
+                        <h3>Management</h3>
+                        <a href="#"> Board of Directors</a>
+                        <a href="#">Management Team</a>
+                    </div>
+                    <div class="column">
+                        <h3>Contact Us</h3>
+                        <a href="">Get In Touch</a>
+                        <a href="">Location</a>
+                        <a href="">Join Our Team</a>
+                    </div>
                 </div>
-                <div class="dev2">
-                    <img src="../assets/images/1621846158523__1_-removebg-preview.png">
-                </div>
-
             </div>
-
-
         </div>
+        <a href="">Services</a>
+        <a href="">Partners</a>
+        <a href="">News</a>
+    </div>
+    <style>
+        .navbar a img {
+            height: 93px;
+            width: 156px;
+            background-size: contain;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .navbar {
+            overflow: hidden;
+            background-color: #11999e;
+            font-family: Arial, Helvetica, sans-serif;
+            justify-content: start;
+
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+
+        .navbar p {
+            color: #11999e;
+        }
+
+        .navbar a {
+            float: left;
+            font-size: 18px;
+            color: white;
+            text-align: center;
+            padding: 10px 18px;
+            text-decoration: none;
+        }
+
+        .dropdown {
+            float: left;
+            overflow: hidden;
+        }
+
+        .dropdown .dropbtn {
+            font-size: 18px;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 10px 18px;
+            background-color: inherit;
+            /* font: inherit; */
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .navbar a:hover,
+        .dropdown:hover .dropbtn {
+            background-color: #ddd;
+            color: #11999e;
+            border-radius: 3px;
+            transition: 0.3s;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #22cccfc6;
+            width: 50%;
+            left: 25%;
+            box-shadow: 1px 8px 16px 1px rgba(0, 0, 0, 0.2);
+
+            /* box-shadow: 1px 4px 9px 3px rgba(17, 153, 158, 0.64);
+          -webkit-box-shadow: 1px 4px 9px 3px rgba(17, 153, 158, 0.64);
+          -moz-box-shadow: 1px 4px 9px 3px rgba(17, 153, 158, 0.64); */
+            border-radius: 30px;
+            /* z-index: 9999; */
+            position: fixed;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Create three equal columns that floats next to each other */
+        .column {
+            float: left;
+            width: 33.33%;
+            padding: 10px;
+
+            background-color: #ccc;
+            height: 200px;
+        }
+
+        .column h3 {
+            padding-bottom: 20px;
+            padding-top: 10px;
+        }
+
+        .column a {
+            float: none;
+            color: black;
+            padding: 10px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+            font-size: 15px;
+        }
+
+        .column a:hover {
+            background-color: #ddd;
+        }
+
+        /* Clear floats after the columns */
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+    <div class="title">
+        <h1>News </h1>
+    </div>
+
+
+    <!-- boddd -->
+	<ol class="olcards">
+		<li style="--cardColor:#11999e">
+			<div class="content">
+                <div class="icon"><img src="../assets/images/1621846158523.jpg"></div>
+
+				<div class="title">Partnership With Autosphere</div>
+				<div class="text">We are thrilled to announce that we have partnered with Autosphere, a leading provider of Robotic Process Automation (RPA) solutions, to offer customers a unique opportunity to streamline their business processes. The partnership combines Open Sky's expertise in information technology with Autosphere's cutting-edge RPA technology to deliver a powerful solution for businesses looking to automate their manual processes. This partnership allows businesses to improve their efficiency, reduce operational costs, and enhance customer satisfaction. RPA technology automates repetitive, rule-based tasks and processes, freeing up time for employees to focus on higher-value activities. The combination of RPA technology and information technology creates a scalable and flexible solution that can be customized to meet the unique needs of each business. Open Sky and Autosphere are excited about this partnership and the opportunity to deliver real value to their customers. They are committed to providing the highest quality of service and support to ensure the success of their customers. This partnership is just the latest example of our commitment to providing innovative solutions to our customers. With our extensive experience in information technology and Autosphere's expertise in RPA technology, businesses can now take advantage of a powerful solution that will drive growth and increase efficiency.</div>
+			</div>
+		</li>
+		<li style="--cardColor:#11999e">
+			<div class="content">
+				<div class="icon">😁</div>
+				<div class="title">Lorem Ipsum</div>
+				<div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, voluptatem.</div>
+			</div>
+		</li>
+	
+
+	</ol>
+
+
+   
+    <!-- Section 2 -->
+
+   <style>
+
+h1 {
+  font-family: sans-serif;
+}
+.olcards,
+.olcards * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.olcards {
+  list-style: none;
+  counter-reset: cardCount;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  --cardsGap: 1rem;
+  gap: var(--cardsGap);
+  padding-bottom: var(--cardsGap);
+}
+.olcards li {
+  counter-increment: cardCount;
+  display: flex;
+  color: white;
+  --labelOffset: 1rem;
+  --arrowClipSize: 1.5rem;
+  margin-top: var(--labelOffset);
+}
+
+.olcards li::before {
+  content: counter(cardCount, decimal-leading-zero);
+  background: white;
+  color: var(--cardColor);
+  font-size: 2em;
+  font-weight: 700;
+  transform: translateY(calc(-1 * var(--labelOffset)));
+  margin-right: calc(-1 * var(--labelOffset));
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-inline: 0.5em;
+}
+
+.olcards li .content {
+  background-color: var(--cardColor);
+  --inlinePadding: 1em;
+  --boxPadding: 0.5em;
+  display: grid;
+  padding: var(--boxPadding) calc(var(--inlinePadding) + var(--arrowClipSize))
+    var(--boxPadding) calc(var(--inlinePadding) + var(--labelOffset));
+  grid-template-areas:
+    "icon title"
+    "icon text";
+  gap: 0.25em 1em;
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--arrowClipSize)) 0,
+    100% 50%,
+    calc(100% - var(--arrowClipSize)) 100%,
+    calc(100% - var(--arrowClipSize)) calc(100% + var(--cardsGap)),
+    0 calc(100% + var(--cardsGap))
+  );
+  position: relative;
+}
+.olcards li .content::before {
+  content: "";
+  position: absolute;
+  width: var(--labelOffset);
+  height: var(--labelOffset);
+  background: var(--cardColor);
+  left: 0;
+  bottom: 0;
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+  filter: brightness(0.75);
+}
+.olcards li .content::after {
+  content: "";
+  position: absolute;
+  height: var(--cardsGap);
+  width: var(--cardsGap);
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.25), transparent 50%);
+  left: 0;
+  top: 100%;
+}
+.olcards li .icon {
+  grid-area: icon;
+  align-self: center;
+  font-size: 2em;
+}
+.olcards li .content .title {
+  grid-area: title;
+  font-size: 1.25em;
+  /* font-weight: 700; */
+}
+.olcards li .content .text {
+  grid-area: text;
+}
+
+   </style>
+
+    <!-- Table -->
+ 
+    <!-- Table style -->
+
+    <!-- End Table Style -->
+    </div>
+    <div class="topScroll">
+        <button onclick="topFunction()" id="myBtn" title="Go to top">Go Back To Top </button>
 
     </div>
 
-    <script>
-        document.querySelectorAll('button.More').forEach(bttn => {
-            bttn.dataset.state = 0;
-            bttn.addEventListener('click', function (e) {
-                let span = this.previousElementSibling;
-                span.dataset.tmp = span.textContent;
-                span.textContent = span.dataset.content;
-                span.dataset.content = span.dataset.tmp;
-
-                this.innerHTML = this.dataset.state == 1 ? '...Show More' : '...Show Less';
-                this.dataset.state = 1 - this.dataset.state;
-            })
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".body-container .accordion-box .accordion-header").click(
+                function () {
+                    var curent_click = $(this)
+                        .parents(".accordion-box")
+                        .find(".accordion-body");
+                    $(curent_click).slideToggle();
+                    $(".accordion-container .accordion-box .accordion-body")
+                        .not(curent_click)
+                        .slideUp();
+                }
+            );
         });
-
-        document.querySelectorAll('span.p1').forEach(span => {
-            span.dataset.content = span.textContent;
-            span.textContent = span.textContent.substr(0, 650);
-        })
-
     </script>
     <script>
-        var w = window.innerWidth;
-        var flag = document.getElementById("flagShow");
-        if (w < 1160) {
-            flag.style.display = "none";
+        // Get the button
+        let mybutton = document.getElementById("myBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
         }
 
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
     </script>
-
 </body>
 
 </html>
-
-
-
