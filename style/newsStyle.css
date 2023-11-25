@@ -88,79 +88,7 @@
 
 
 /* aa */
-.topScroll button {
-    margin: auto;
-    display: block;
-    background-color: transparent;
-    border: 0;
-    text-decoration: underline;
-    font-size: 20px;
-    cursor: pointer;
-    padding-bottom: 29px;
-    padding-top: 50px;
-}
 
-.wrapper {
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
-    margin: auto;
-    padding-top: 50px;
-}
-
-.icon {
-    width: 70px;
-    height: 70px;
-    background: #ee5310;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    margin-bottom: 30px;
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
-}
-
-.icon i {
-    color: #fff;
-    font-size: 25px;
-}
-
-.card {
-    width: 24%;
-    min-height: 400px;
-    background-color: white;
-    box-shadow: 2px 2px 0px #11999e, -2px -2px 0px #11999e;
-    transition: all .5s ease;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    color: #484948;
-}
-
-.card h2 {
-    font-size: 22px;
-    text-transform: uppercase;
-    margin-bottom: 15px;
-    letter-spacing: 1px;
-}
-
-.card p {
-    font-size: 16px;
-    line-height: 1.5;
-    padding: 8px;
-}
-
-.card:hover {
-    transform: scale(1.05);
-    cursor: grab;
-}
-
-.card:hover i {
-    transition: all .9s ease;
-    transform: rotate(360deg);
-}
 
 @media (max-width:991px) {
     .wrapper {
@@ -189,6 +117,7 @@
     align-items: center;
     margin: 0;
     padding: 18px 0 0 5%;
+    margin-bottom: 50px;
 }
 
 .title h1 {
@@ -199,6 +128,7 @@
     animation: forwards typing 7s;
     white-space: nowrap;
     overflow: hidden;
+
 }
 .topScroll button {
   margin: auto;

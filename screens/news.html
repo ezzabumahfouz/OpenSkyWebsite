@@ -188,15 +188,21 @@
 	<ol class="olcards">
 		<li style="--cardColor:#11999e">
 			<div class="content">
-                <div class="icon"><img src="../assets/images/1621846158523.jpg"></div>
-
+				<div class="icon"><img src="../assets/images/1621846158523.jpg"></div>
 				<div class="title">Partnership With Autosphere</div>
 				<div class="text">We are thrilled to announce that we have partnered with Autosphere, a leading provider of Robotic Process Automation (RPA) solutions, to offer customers a unique opportunity to streamline their business processes. The partnership combines Open Sky's expertise in information technology with Autosphere's cutting-edge RPA technology to deliver a powerful solution for businesses looking to automate their manual processes. This partnership allows businesses to improve their efficiency, reduce operational costs, and enhance customer satisfaction. RPA technology automates repetitive, rule-based tasks and processes, freeing up time for employees to focus on higher-value activities. The combination of RPA technology and information technology creates a scalable and flexible solution that can be customized to meet the unique needs of each business. Open Sky and Autosphere are excited about this partnership and the opportunity to deliver real value to their customers. They are committed to providing the highest quality of service and support to ensure the success of their customers. This partnership is just the latest example of our commitment to providing innovative solutions to our customers. With our extensive experience in information technology and Autosphere's expertise in RPA technology, businesses can now take advantage of a powerful solution that will drive growth and increase efficiency.</div>
 			</div>
 		</li>
 		<li style="--cardColor:#11999e">
 			<div class="content">
-				<div class="icon">😁</div>
+                <div class="icon"><img src="../assets/images/1621846158523.jpg"></div>
+				<div class="title">Lorem Ipsum</div>
+				<div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, voluptatem.</div>
+			</div>
+		</li>
+        <li style="--cardColor:#11999e">
+			<div class="content">
+                <div class="icon"><img src="../assets/images/1621846158523.jpg"></div>
 				<div class="title">Lorem Ipsum</div>
 				<div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, voluptatem.</div>
 			</div>
@@ -230,6 +236,8 @@ h1 {
   --cardsGap: 1rem;
   gap: var(--cardsGap);
   padding-bottom: var(--cardsGap);
+  width: 90%;
+  margin: auto;
 }
 .olcards li {
   counter-increment: cardCount;
@@ -246,9 +254,9 @@ h1 {
   color: var(--cardColor);
   font-size: 2em;
   font-weight: 700;
-  transform: translateY(calc(-1 * var(--labelOffset)));
-  margin-right: calc(-1 * var(--labelOffset));
-  z-index: 1;
+  /* transform: translateY(calc(-1 * var(--labelOffset)));
+  margin-right: calc(-1 * var(--labelOffset)); */
+  /* z-index: 1; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -275,6 +283,9 @@ h1 {
     0 calc(100% + var(--cardsGap))
   );
   position: relative;
+
+ 
+
 }
 .olcards li .content::before {
   content: "";
@@ -287,7 +298,7 @@ h1 {
   clip-path: polygon(0 0, 100% 0, 0 100%);
   filter: brightness(0.75);
 }
-.olcards li .content::after {
+/* .olcards li .content::after {
   content: "";
   position: absolute;
   height: var(--cardsGap);
@@ -295,11 +306,21 @@ h1 {
   background: linear-gradient(to right, rgba(0, 0, 0, 0.25), transparent 50%);
   left: 0;
   top: 100%;
-}
+} */
 .olcards li .icon {
   grid-area: icon;
   align-self: center;
-  font-size: 2em;
+  /* font-size: 2em; */
+  width: 200px;
+  min-height: 100px;
+  margin: auto;
+}
+.olcards li .icon img {
+    object-fit: contain;
+    margin:10px 0px;
+    border-radius: 10px;
+
+
 }
 .olcards li .content .title {
   grid-area: title;

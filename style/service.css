@@ -183,7 +183,7 @@
 }
 
 .body-container .accordion-box {
-    border: 1px solid #ccc;
+    border: 2px solid #ccc;
     margin-bottom: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
     /* width: 100%; */
@@ -203,7 +203,7 @@
 }
 
 .body-container .accordion-box .accordion-header a {
-    background-color: #000000;
+    background-color: #11999e;
     color: #fff;
     display: block;
     padding: 10px 20px;
