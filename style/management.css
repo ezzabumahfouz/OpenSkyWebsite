@@ -312,7 +312,12 @@
     position: relative;
     padding: 24px;
     background: #fff;
+    transition: 0.2s;
   }
+  .box:hover {
+    scale: calc(1.05);
+  }
+  
   
   .box-top {
     display: flex;
@@ -339,6 +344,10 @@
   .box-title {
     border-left: 3px solid var(--purple);
     padding-left: 12px;
+    transition: 0.3s;
+  }
+  .box-title:hover {
+    scale: calc(1.05);
   }
   
   .user-follow-info {
