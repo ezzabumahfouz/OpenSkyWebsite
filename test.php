@@ -1,57 +1,72 @@
-<!-- <!DOCTYPE html>
-<html>
+<?php
+
+  require_once 'DB/connection.php';
+
+  $sql = "SELECT * FROM news";
+  $all_product = $conn->query($sql);
+
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Read Data From Database Using PHP - Demo Preview</title>
-<meta content="noindex, nofollow" name="robots">
-<link href="style.css" rel="stylesheet" type="text/css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="font/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Ecommerce Website</title>
 </head>
 <body>
-<div class="maindiv">
-<div class="divA">
-<div class="title">
-<h2>Read Data Using PHP</h2>
-</div>
-<div class="divB">
-<div class="divD">
-// <p>Click On Menu</p>
-// 
-// <?php
-// $connection = mysql_connect("localhost", "root", ""); // Establishing Connection with Server
-// $db = mysql_select_db("company", $connection); // Selecting Database
-// //MySQL Query to read data
-// $query = mysql_query("select * from employee", $connection);
-// while ($row = mysql_fetch_array($query)) {
-// echo "<b><a href="readphp.php?id={$row['employee_id']}">{$row['employee_name']}</a></b>";
-// echo "<br />";
-// }
-// ?>
-// </div>
-// <?php
-// if (isset($_GET['id'])) {
-// $id = $_GET['id'];
-// $query1 = mysql_query("select * from employee where employee_id=$id", $connection);
-// while ($row1 = mysql_fetch_array($query1)) {
-// ?>
-// <div class="form">
-// <h2>---Details---</h2>
-//  Displaying Data Read From Database 
-// <span>Name:</span> <?php echo $row1['employee_name']; ?>
-// <span>E-mail:</span> <?php echo $row1['employee_email']; ?>
-// <span>Contact No:</span> <?php echo $row1['employee_contact']; ?>
-// <span>Address:</span> <?php echo $row1['employee_address']; ?>
-// </div>
-// <?php
-// }
-// }
-// ?>
-// <div class="clear"></div>
-// </div>
-// <div class="clear"></div>
-// </div>
-// </div>
-// <?php
-// mysql_close($connection); // Closing Connection with Server
-// ?>
-// </body>
-// </html> 
-// 
+  
+
+   <main>
+       <?php
+          while($row = mysqli_fetch_assoc($all_product)){
+       ?>
+       <div class="card">
+         
+           <div class="caption">
+               <p class="rate">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+               </p>
+               <p class="product_name"><?php echo $row["News_ID"];  ?></p>
+               <p class="price"><b>$<?php echo $row["News_Title"]; ?></b></p>
+               <p class="discount"><b><del>$<?php echo $row["News_Description"]; ?></del></b></p>
+           </div>
+           <button class="add" data-id="<?php echo $row["News_ID"];  ?>">Add to cart</button>
+       </div>
+       <?php
+
+          }
+     ?>
+   </main>
+   <script>
+       var product_id = document.getElementsByClassName("add");
+       for(var i = 0; i<product_id.length; i++){
+           product_id[i].addEventListener("click",function(event){
+               var target = event.target;
+               var id = target.getAttribute("data-id");
+               var xml = new XMLHttpRequest();
+               xml.onreadystatechange = function(){
+                   if(this.readyState == 4 && this.status == 200){
+                       var data = JSON.parse(this.responseText);
+                       target.innerHTML = data.in_cart;
+                       document.getElementById("badge").innerHTML = data.num_cart + 1;
+                   }
+               }
+
+               xml.open("GET","connection.php?id="+id,true);
+               xml.send();
+            
+           })
+       }
+
+   </script>
+</body>
+</html>

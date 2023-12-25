@@ -209,7 +209,7 @@ li {
   margin-bottom: calc(var(--borderR));
   position: relative;
   transition: 0.3s;
-  width: 35%;
+  width: 200px;
   margin-top: 30px;
 }
 li:hover {

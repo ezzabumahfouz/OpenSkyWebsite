@@ -1,16 +1,40 @@
+<?php
+
+require_once '../DB/connection.php';
+
+$sql = "SELECT * FROM jobs";
+$all_product = $conn->query($sql);
+// 
+if (isset($_GET["Job_ID"])) {
+    $product_Job_ID = $_GET["Job_ID"];
+    $sql = "SELECT * FROM jobs";
+    $result = $conn->query($sql);
+    $total_jobs = "SELECT * FROM jobs";
+    $total_jobs_result = $conn->query($total_jobs);
+    $jobs_num = mysqli_num_rows($total_jobs_result);
+
+    if (mysqli_num_rows($result) > 0) {
+        $in_jobs = "already In jobs";
+
+        echo json_encode(["num_jobs" => $jobs_num, "in_jobs" => $in_jobs]);
+    } else {
+
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
-
-
 <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="../style/newsStyle.css" />
+    <link rel="stylesheet" href="../style/carrersStyle.css" />
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
 
-    <title>News | Open Sky</title>
+    <title>Carrers | Open Sky</title>
 
     <!-- Additional things -->
 
@@ -51,14 +75,14 @@
                         <h3>Contact Us</h3>
                         <a href="../screens/contactus.html">Get In Touch</a>
                         <a href="../screens/contactus.html">Location</a>
-                        <a href="../screens/carrers.html">Join Our Team</a>
+                        <a href="#">Join Our Team</a>
                     </div>
                 </div>
             </div>
         </div>
         <a href="../screens/service.html">Services</a>
         <a href="../screens/partner.html">Partners</a>
-        <a href="#">News</a>
+        <a href="../screens/news.php">News</a>
     </div>
     <style>
         .navbar a img {
@@ -182,171 +206,151 @@
         }
     </style>
     <div class="title">
-        <h1>News </h1>
+        <h1>Carrers </h1>
     </div>
 
 
-    <!-- boddd -->
-	<ol class="olcards">
-		<!-- <li style="--cardColor:#11999e">
-			<div class="content">
-				<div class="icon"><img src="../assets/images/1621846158523.jpg"></div>
-				<div class="title">Partnership With Autosphere</div>
-				<div class="text">We are thrilled to announce that we have partnered with Autosphere, a leading provider of Robotic Process Automation (RPA) solutions, to offer customers a unique opportunity to streamline their business processes. The partnership combines Open Sky's expertise in information technology with Autosphere's cutting-edge RPA technology to deliver a powerful solution for businesses looking to automate their manual processes. This partnership allows businesses to improve their efficiency, reduce operational costs, and enhance customer satisfaction. RPA technology automates repetitive, rule-based tasks and processes, freeing up time for employees to focus on higher-value activities. The combination of RPA technology and information technology creates a scalable and flexible solution that can be customized to meet the unique needs of each business. Open Sky and Autosphere are excited about this partnership and the opportunity to deliver real value to their customers. They are committed to providing the highest quality of service and support to ensure the success of their customers. This partnership is just the latest example of our commitment to providing innovative solutions to our customers. With our extensive experience in information technology and Autosphere's expertise in RPA technology, businesses can now take advantage of a powerful solution that will drive growth and increase efficiency.</div>
-			</div>
-		</li>
-		<li style="--cardColor:#11999e">
-			<div class="content">
-                <div class="icon"><img src="../assets/images/1621846158523.jpg"></div>
-				<div class="title">Lorem Ipsum</div>
-				<div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, voluptatem.</div>
-			</div>
-		</li> -->
-        <li style="--cardColor:#11999e">
-			<div class="content">
-                <div class="icon"><img src="../assets/images/1621846158523.jpg"></div>
-				<div class="title"></div>
-				<div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, voluptatem.</div>
-			</div>
-		</li>
-	
 
-	</ol>
 
 
    
-    <!-- Section 2 -->
 
-   <style>
 
-h1 {
-  font-family: sans-serif;
+    <!-- new cards -->
+    <div class="NewCarrers">
+
+
+            <ol style="--length: 5" role="list">
+      
+<section class="dl-blurbs">
+<dl>
+<?php
+        while ($row = mysqli_fetch_assoc($all_product)) {
+            ?>
+<div class="container">
+  <h1 class="center">                        <?php echo $row["Job_Title"]; ?>
+</h1>
+  
+
+  
+  <article class="episode">
+    <div class="episode__number">                        <?php echo $row["Job_ID"]; ?>
+</div>
+    <div class="episode__content">
+      <div class="title">                        <?php echo $row["Job_Experienced"]; ?>
+</div>
+      <div class="story">
+        <p>  <?php echo $row["Job_Description"]; ?></p>
+        <div class="colored">
+        <p>  <a href="<?php echo $row["Job_Link"]; ?>">View In Linkedin</a>
+</p>
+
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+      </div>
+    </div>
+  </article>
+</div>
+<?php
+
 }
-.olcards,
-.olcards * {
-  margin: 0;
-  padding: 0;
+?>
+
+
+</section>
+
+            </ol>
+       
+
+
+    </div>
+
+    <!-- Style -->
+<style>
+    *,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-.olcards {
-  list-style: none;
-  counter-reset: cardCount;
-  font-family: sans-serif;
-  display: flex;
-  flex-direction: column;
-  --cardsGap: 1rem;
-  gap: var(--cardsGap);
-  padding-bottom: var(--cardsGap);
-  width: 90%;
-  margin: auto;
-}
-.olcards li {
-  counter-increment: cardCount;
-  display: flex;
-  color: white;
-  --labelOffset: 1rem;
-  --arrowClipSize: 1.5rem;
-  margin-top: var(--labelOffset);
-}
-
-.olcards li::before {
-  content: counter(cardCount, decimal-leading-zero);
+body {
   background: white;
-  color: var(--cardColor);
-  font-size: 2em;
-  font-weight: 700;
-  /* transform: translateY(calc(-1 * var(--labelOffset)));
-  margin-right: calc(-1 * var(--labelOffset)); */
-  /* z-index: 1; */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-inline: 0.5em;
+  color: black;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
 }
 
-.olcards li .content {
-  background-color: var(--cardColor);
-  --inlinePadding: 1em;
-  --boxPadding: 0.5em;
+p {
+  margin: 0 0 13px 0;
+}
+.colored a {
+    color: #11999e ;
+    
+}
+a {
+  color: black;
+}
+
+.center { text-align: center; }
+
+.container {
+  width: 95%;
+  max-width: 1220px;
+  margin: 0 auto;
+}
+
+.episode {
   display: grid;
-  padding: var(--boxPadding) calc(var(--inlinePadding) + var(--arrowClipSize))
-    var(--boxPadding) calc(var(--inlinePadding) + var(--labelOffset));
-  grid-template-areas:
-    "icon title"
-    "icon text";
-  gap: 0.25em 1em;
-  clip-path: polygon(
-    0 0,
-    calc(100% - var(--arrowClipSize)) 0,
-    100% 50%,
-    calc(100% - var(--arrowClipSize)) 100%,
-    calc(100% - var(--arrowClipSize)) calc(100% + var(--cardsGap)),
-    0 calc(100% + var(--cardsGap))
-  );
+  grid-template-columns: 1fr 3fr;
   position: relative;
-
- 
-
-}
-.olcards li .content::before {
-  content: "";
-  position: absolute;
-  width: var(--labelOffset);
-  height: var(--labelOffset);
-  background: var(--cardColor);
-  left: 0;
-  bottom: 0;
-  clip-path: polygon(0 0, 100% 0, 0 100%);
-  filter: brightness(0.75);
-}
-/* .olcards li .content::after {
-  content: "";
-  position: absolute;
-  height: var(--cardsGap);
-  width: var(--cardsGap);
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.25), transparent 50%);
-  left: 0;
-  top: 100%;
-} */
-.olcards li .icon {
-  grid-area: icon;
-  align-self: center;
-  /* font-size: 2em; */
-  width: 200px;
-  min-height: 100px;
-  margin: auto;
-}
-.olcards li .icon img {
-    object-fit: contain;
-    margin:10px 0px;
-    border-radius: 10px;
-
-
-}
-.olcards li .content .title {
-  grid-area: title;
-  font-size: 1.25em;
-  /* font-weight: 700; */
-}
-.olcards li .content .text {
-  grid-area: text;
 }
 
-   </style>
+.episode__number {
+  font-size: 5vw;
+  font-weight: 600;
+  padding: 10px 0;
+  position: sticky;
+  top: 17vh;
+  text-align: center;
+  height: calc(10vw + 20px);
+  transition: all 0.2s ease-in;
+}
 
-    <!-- Table -->
- 
-    <!-- Table style -->
+.episode__content {
+  border-top: 2px solid #11999e;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-gap: 5px;
+  padding: 15px 0;
+}
 
-    <!-- End Table Style -->
-    </div>
-    <div class="topScroll">
-        <button onclick="topFunction()" id="myBtn" title="Go to top">Go Back To Top </button>
+.episode__content .title {
+  font-weight: 600
+  ;
+  display: block;
+  color: #696969;
+}
 
-    </div>
+.episode__content .story {
+  line-height: 26px;
+}
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+@media (max-width: 600px) {
+  .episode__content {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .episode__content .story {
+    font-size: 15px;
+  }
+}
+</style>    <!-- End Style -->
+    <!-- End New Cards -->
     <script type="text/javascript">
         $(document).ready(function () {
             $(".body-container .accordion-box .accordion-header").click(
@@ -383,7 +387,6 @@ h1 {
             document.documentElement.scrollTop = 0;
         }
     </script>
-
 </body>
 
 </html>
