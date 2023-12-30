@@ -10,7 +10,7 @@ if (isset($_POST["submit"])) {
    $result = mysqli_query($conn, $sql);
 
    if ($result) {
-      header("Location: index.php?msg=New record created successfully");
+      header("Location: News.php?msg=New record created successfully");
    } else {
       echo "Failed: " . mysqli_error($conn);
    }
@@ -35,38 +35,38 @@ if (isset($_POST["submit"])) {
    <!-- Font Awesome -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-   <title>PHP CRUD Application</title>
+   <title>Admin | Open Sky Technology</title>
 </head>
 
 <body>
-   <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #00ff5573;">
-      PHP Complete CRUD Application
+   <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #11999e;  color:white;">
+   News Panel
    </nav>
 
    <div class="container">
       <div class="text-center mb-4">
-         <h3>Add New User</h3>
-         <p class="text-muted">Complete the form below to add a new user</p>
+         <h3>Add News</h3>
+         <p class="text-muted">Complete the form below to add a news</p>
       </div>
 
       <div class="container d-flex justify-content-center">
          <form action="" method="post" style="width:50vw; min-width:300px;">
             <div class="row mb-3">
                <div class="col">
-                  <label class="form-label">First Name:</label>
-                  <input type="text" class="form-control" name="News_Title" placeholder="Albert">
+                  <label class="form-label">Title:</label>
+                  <input type="text" class="form-control" name="News_Title" placeholder="title">
                </div>
 
                <div class="col">
-                  <label class="form-label">Last Name:</label>
-                  <input type="text" class="form-control" name="News_Description" placeholder="Einstein">
+                  <label class="form-label">News Description:</label>
+                  <input type="text" class="form-control" name="News_Description" placeholder="des...">
                </div>
             </div>
 
           
             <div>
                <button type="submit" class="btn btn-success" name="submit">Save</button>
-               <a href="index.php" class="btn btn-danger">Cancel</a>
+               <a href="News.php" class="btn btn-danger">Cancel</a>
             </div>
          </form>
       </div>

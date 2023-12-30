@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 
 require_once 'DB/connection.php';
 
@@ -28,7 +28,7 @@ if (isset($_GET["News_ID"])) {
     }
 }
 
-?>
+?> -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -631,7 +631,7 @@ if (isset($_GET["News_ID"])) {
     <div class="news">
     <ol>
 
-    <?php
+    <!-- <?php
     $x = 0;
         while ($row = mysqli_fetch_assoc($all_product)) {
           if ($x <2) {
@@ -648,8 +648,11 @@ if (isset($_GET["News_ID"])) {
           }
 
         }
-        ?>
-   
+        ?> -->
+        <li><span>01</span><p> This is news title <br> <h6> Here will be all news</h6></p></li>
+        <li><span>02</span><p> This is news title <br> <h6> Here will be all news</h6></p></li>
+
+
    </ol>
    </div>
 
@@ -706,7 +709,7 @@ ol li {
   font: bold 24pt helvetica, arial, sans-serif;
   position: relative;
   margin-bottom: 20px;
-  border-bottom: solid;
+  /* border-bottom: solid; */
 }
 
 li p {

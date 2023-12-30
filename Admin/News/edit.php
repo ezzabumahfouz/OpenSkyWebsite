@@ -13,7 +13,7 @@ if (isset($_POST["submit"])) {
   $result = mysqli_query($conn, $sql);
 
   if ($result) {
-    header("Location: index.php?msg=Data updated successfully");
+    header("Location: News.php?msg=Data updated successfully");
   } else {
     echo "Failed: " . mysqli_error($conn);
   }
@@ -41,12 +41,12 @@ if (isset($_POST["submit"])) {
     integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <title>PHP CRUD Application</title>
+  <title>Admin | Open Sky Technology</title>
 </head>
 
 <body>
-  <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #00ff5573;">
-    PHP Complete CRUD Application
+  <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #11999e; color:white;">
+  News Panel
   </nav>
 
   <div class="container">
@@ -80,7 +80,7 @@ if (isset($_POST["submit"])) {
 
         <div>
           <button type="submit" class="btn btn-success" name="submit">Update</button>
-          <a href="index.php" class="btn btn-danger">Cancel</a>
+          <a href="News.php" class="btn btn-danger">Cancel</a>
         </div>
       </form>
     </div>

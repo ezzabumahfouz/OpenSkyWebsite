@@ -5,7 +5,7 @@ $sql = "DELETE FROM `news` WHERE News_ID = $News_ID";
 $result = mysqli_query($conn, $sql);
 
 if ($result) {
-  header("Location: index.php?msg=Data deleted successfully");
+  header("Location: News.php?msg=News deleted successfully");
 } else {
   echo "Failed: " . mysqli_error($conn);
 }
