@@ -2,7 +2,7 @@
 
 require_once '../DB/connection.php';
 
-$sql = "SELECT * FROM news";
+$sql = "SELECT * FROM news ORDER BY News_ID DESC";
 $all_product = $conn->query($sql);
 // 
 if (isset($_GET["News_ID"])) {
@@ -116,7 +116,7 @@ if (isset($_GET["News_ID"])) {
 
             position: sticky;
             top: 0;
-            z-index: 1;
+            z-index: 2;
         }
 
         .navbar p {
@@ -224,28 +224,42 @@ if (isset($_GET["News_ID"])) {
 
 
 
-    <div class="wrapper">
+    <ol class="olcards">
 
-        <div class="scroll-cards">
-            <!-- <h1>Some Sticky-Stacked Cards</h1> -->
-            <?php
-            while ($row = mysqli_fetch_assoc($all_product)) {
-                ?>
-
-                <article class="scroll-cards__item" aria-label="Wie - 1">
-                    <h2>
-                        <?php echo $row["News_Title"]; ?>
-                    </h2>
-                    <p>
-                        <?php echo $row["News_Description"]; ?>
-                    </p>
-                </article>
-                <?php
-
-            }
+        <?php
+        $x =1;
+        while ($row = mysqli_fetch_assoc($all_product)) {
             ?>
 
-        </div>
+            <!-- <li style="--cardColor:#fc374e">
+                <div class="content">
+                    <div class="icon"></div>
+                    <div class="title"><?php echo $row["News_Title"]; ?></div>
+                    <div class="text"><?php echo $row["News_Description"]; ?>
+                    </div>
+                </div>
+            </li> -->
+            <li><span>
+                    <?php echo ($x) ?>
+                </span>
+                <p>
+                    <?php echo $row["News_Title"]; ?> <br>
+                <h6>
+                    <?php echo $row["News_Description"]; ?>
+                </h6>
+                </p>
+            </li>
+
+            <?php
+             $x++;
+
+        }
+  
+        ?>
+    </ol>
+
+
+
 
     </div>
 
@@ -253,162 +267,164 @@ if (isset($_GET["News_ID"])) {
 
 
 
-    <!-- Section 2 -->
 
+    <!-- Section 2 -->
     <style>
-        .wrapper,
-        .wrapper:before,
-        .wrapper:after {
+        .olcards {
+            width: 70%;
+
+            margin: 20px auto;
+        }
+
+        /* list styles */
+
+        ol {
+            list-style: none;
+            color: #ccc;
+        }
+
+        ol li {
+            font: bold 24pt helvetica, arial, sans-serif;
+            position: relative;
+            margin-bottom: 20px;
+            border-bottom: solid;
+        }
+
+        li p {
+            font: 19px helvetica, arial, sans-serif;
+            color: black;
+            padding-left: 60px;
+            text-align: justify;
+
+        }
+
+        span {
+            position: absolute;
+            line-height: 25px;
+        }
+
+        h6 {
+            font-size: 15px;
+            padding-left: 60px;
+            color: #555;
+            padding-top: 10px;
+            margin-bottom: 30px;
+            text-align: justify;
+            
+        }
+    </style>
+    <!-- <style>
+        .olcards {
+            background: white;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-family: sans-serif;
+        }
+
+        .olcards,
+        .olcards * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
 
-        .wrapper {
-            padding: 2em;
-            background: white;
+        .olcards {
+            list-style: none;
+            counter-reset: cardCount;
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            --cardsGap: 1rem;
+            gap: var(--cardsGap);
+            padding-bottom: var(--cardsGap);
+        }
+
+        .olcards li {
+            counter-increment: cardCount;
+            display: flex;
             color: white;
+            --labelOffset: 1rem;
+            --arrowClipSize: 1.5rem;
+            margin-top: var(--labelOffset);
         }
 
-        .wrapper {
-            max-width: 90%;
-            margin: 0 auto;
-        }
-
-        .scroll-cards {
-            counter-reset: card;
-            position: relative;
-            display: block;
-            padding-bottom: 30vh;
-        }
-
-        .scroll-cards>.scroll-cards__item+.scroll-cards__item {
-            margin-top: 40vh;
-        }
-
-        .scroll-cards h1 {
-            position: sticky;
-            top: 2rem;
+        .olcards li::before {
+            content: counter(cardCount, decimal-leading-zero);
+            background: white;
+            color: #11999e;
             font-size: 2em;
-            margin: 0 0 0.5em;
+            font-weight: 700;
+            transform: translateY(calc(-1 * var(--labelOffset)));
+            margin-right: calc(-1 * var(--labelOffset));
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-inline: 0.5em;
         }
 
-        .scroll-cards__item {
-            --offset: 0.5em;
-            color: #000;
-            position: sticky;
-            top: max(16vh, 10em);
-            padding: 2em 1.5em;
-            min-height: 19em;
-            background: #fff;
-            box-shadow: 0 2px 40px rgba(0, 0, 0, 0.1);
-            width: calc(100% - 5 * var(--offset));
+        .olcards li .content {
+            background-color: #11999e;
+            --inlinePadding: 1em;
+            --boxPadding: 0.5em;
+            display: grid;
+            padding: var(--boxPadding) calc(var(--inlinePadding) + var(--arrowClipSize)) var(--boxPadding) calc(var(--inlinePadding) + var(--labelOffset));
+            grid-template-areas:
+                "icon title"
+                "icon text";
+            gap: 0.25em 1em;
+            clip-path: polygon(0 0,
+                    calc(100% - var(--arrowClipSize)) 0,
+                    100% 50%,
+                    calc(100% - var(--arrowClipSize)) 100%,
+                    calc(100% - var(--arrowClipSize)) calc(100% + var(--cardsGap)),
+                    0 calc(100% + var(--cardsGap)));
+            position: relative;
+            max-width: 95%;
+            margin-right: 5%;
         }
 
-        h2 {
-            font-size: 26px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            font-weight: bold;
+        .olcards li .content::before {
+            content: "";
+            position: absolute;
+            width: var(--labelOffset);
+            height: var(--labelOffset);
+            background: #11999e;
+            left: 0;
+            bottom: 0;
+            clip-path: polygon(0 0, 100% 0, 0 100%);
+            filter: brightness(0.75);
         }
 
-        p {
+        .olcards li .content::after {
+            content: "";
+            position: absolute;
+            height: var(--cardsGap);
+            width: var(--cardsGap);
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.25), transparent 50%);
+            left: 0;
+            top: 100%;
+        }
+
+        .olcards li .icon {
+            grid-area: icon;
+            align-self: center;
+            font-size: 2em;
+        }
+
+        .olcards li .content .title {
+            grid-area: title;
             font-size: 1.25em;
-            line-height: 1.5;
-            margin: auto;
+            font-weight: 700;
+            padding:10px 0px ;
         }
 
-        /*
-If you use SASS you can shorten this one here like this:
-
-@for $i from 0 through 5 {
-  &:nth-of-type(#{$i}) {
-    transform: translate(calc((#{$i} - 1) * var(--offset)), calc((#{$i} - 1) * var(--offset)));
-  }
-}
-*/
-        .scroll-cards__item:nth-of-type(0) {
-            transform: translate(calc((0 - 1) * var(--offset)), calc((0 - 1) * var(--offset)));
+        .olcards li .content .text {
+            grid-area: text;
         }
-
-        .scroll-cards__item:nth-of-type(1) {
-            transform: translate(calc((1 - 1) * var(--offset)), calc((1 - 1) * var(--offset)));
-        }
-
-        .scroll-cards__item:nth-of-type(2) {
-            transform: translate(calc((2 - 1) * var(--offset)), calc((2 - 1) * var(--offset)));
-        }
-
-        .scroll-cards__item:nth-of-type(3) {
-            transform: translate(calc((3 - 1) * var(--offset)), calc((3 - 1) * var(--offset)));
-        }
-
-        .scroll-cards__item:nth-of-type(4) {
-            transform: translate(calc((4 - 1) * var(--offset)), calc((4 - 1) * var(--offset)));
-        }
-
-        .scroll-cards__item:nth-of-type(5) {
-            transform: translate(calc((5 - 1) * var(--offset)), calc((5 - 1) * var(--offset)));
-        }
-
-        .scroll-cards__item:nth-of-type(6) {
-            transform: translate(calc((6 - 1) * var(--offset)), calc((6 - 1) * var(--offset)));
-        }
-
-        .scroll-cards__item:nth-of-type(7) {
-            transform: translate(calc((7 - 1) * var(--offset)), calc((7 - 1) * var(--offset)));
-        }
-
-        .scroll-cards__item:nth-of-type(8) {
-            transform: translate(calc((8 - 1) * var(--offset)), calc((8 - 1) * var(--offset)));
-        }
-
-        .scroll-cards__item:nth-of-type(9) {
-            transform: translate(calc((9 - 1) * var(--offset)), calc((9 - 1) * var(--offset)));
-        }
-
-        .scroll-cards__item:nth-of-type(10) {
-            transform: translate(calc((10 - 1) * var(--offset)), calc((10 - 1) * var(--offset)));
-        }
-
-        @media screen and (min-width: 37em) {
-            h1 {
-                font-size: 3em;
-            }
-
-            .scroll-cards__item {
-                --offset: 1em;
-                padding-left: 5em;
-            }
-
-            .scroll-cards__item:before {
-                counter-increment: card;
-                content: "0" counter(card);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                width: 2.75em;
-                height: 2.75em;
-                background: #11999e;
-                color: #fff;
-                text-align: center;
-                border-radius: 50%;
-                position: absolute;
-                left: 1.25em;
-                top: 1.25em;
-                font-weight: bold;
-            }
-        }
-
-        @media screen and (min-width: 62em) {
-            .scroll-cards h1 {
-                font-size: 3em;
-            }
-
-            .scroll-cards__item {
-                --offset: 1.25em;
-                max-width: 42em;
-            }
-        }
-    </style>
+    </style> -->
 
     <!-- Table -->
 

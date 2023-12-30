@@ -1,3 +1,35 @@
+<?php
+
+require_once 'DB/connection.php';
+
+$sql = "SELECT * FROM news ORDER BY News_ID DESC";
+$all_product = $conn->query($sql);
+// 
+if (isset($_GET["News_ID"])) {
+    $product_News_ID = $_GET["News_ID"];
+    $sql = "SELECT * FROM news";
+    $result = $conn->query($sql);
+    $total_news = "SELECT * FROM news";
+    $total_news_result = $conn->query($total_news);
+    $news_num = mysqli_num_rows($total_news_result);
+
+    if (mysqli_num_rows($result) > 0) {
+        $in_news = "already In news";
+
+        echo json_encode(["num_news" => $news_num, "in_news" => $in_news]);
+    } else {
+        // $insert = "INSERT INTO news(product_News_ID) VALUES($product_News_ID)";
+        // if($conn->query($insert) === true){
+        //     $in_news = "added into news";
+        //     echo json_encode(["num_news"=>$news_num,"in_news"=>$in_news]);
+        // }else{
+        //     echo "<script>alert(It doesn't insert)</script>";
+        // }
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -568,10 +600,64 @@
         </style>
   <!-- end nav bar -->
   <!-- ---------        About Us            ------------ -->
+  <br>
+  <br>     
+  <br>     
+
+  <div class="divider"></div>
+  <h4>
+      02
+    </h4>
+    <h5>
+      Welcome Message
+    </h5>
+    <div class="divider"></div>
+
+    <h4>
+      03
+    </h4>
+    <h5>
+      Why Open Sky Technology
+    </h5>
+    <div class="divider"></div>
+
+  <div class="our-client">
+    <h4>
+      04
+    </h4>
+    <h5>
+      News
+    </h5>
+    <div class="news">
+    <ol>
+
+    <?php
+    $x = 0;
+        while ($row = mysqli_fetch_assoc($all_product)) {
+          if ($x <2) {
+
+          
+            ?>
+
+      <li><span> <?php echo($x+1) ?> </span><p><?php echo $row["News_Title"]; ?> <br> <h6><?php echo $row["News_Description"]; ?></h6></p></li>
+      
+
+ 
+            <?php
+            $x++;
+          }
+
+        }
+        ?>
+   
+   </ol>
+   </div>
 
 
 
-  
+  </div>
+  <div class="divider"></div>
+
 
 
   <!-- Our partners -->
@@ -596,29 +682,59 @@
     </div>
 
   </div>
-  <div class="our-client">
-    <h4>
-      06
-    </h4>
-    <h5>
-      Our Clients
-    </h5>
-    <!-- <div class="client">
-            <div class="partner-images">
-                <img src="assets/images/naitel.png">
-                <img src="assets/images/inovar.png">
-                <img src="assets/images/inovar.png">
-                <img src="assets/images/inovar.png">
-
-            </div>
-
-        </div> -->
-
-  </div>
 
 
 
 
+<style>
+  /* browser reset */
+
+
+.news {
+  width: 600px;
+  margin: 20px auto;
+}
+
+/* list styles */
+
+ol {
+  list-style: none;
+  color: #ccc;
+}
+
+ol li {
+  font: bold 24pt helvetica, arial, sans-serif;
+  position: relative;
+  margin-bottom: 20px;
+  border-bottom: solid;
+}
+
+li p {
+  font: 19px helvetica, arial, sans-serif;
+  color: black;
+  padding-left: 60px;
+  text-align: justify;
+
+}
+
+span {
+  position: absolute;
+  line-height: 25px;
+}
+h6 {
+  font-size: 15px;
+  padding-left: 60px ;
+  color: #555;
+  padding-top: 10px;
+  margin-bottom: 30px;
+  text-align: justify;
+}
+.divider{
+  border-bottom: solid;
+  width: 90%;
+  margin: auto;
+}
+</style>
 
 
   <!-- Footer -->
