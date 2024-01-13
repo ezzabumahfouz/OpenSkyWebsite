@@ -1,5 +1,5 @@
 <?php
-include "db_conn.php";
+include "../../DB/db_conn.php";
 $News_ID = $_GET["News_ID"];
 $sql = "DELETE FROM `news` WHERE News_ID = $News_ID";
 $result = mysqli_query($conn, $sql);

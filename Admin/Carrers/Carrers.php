@@ -24,7 +24,7 @@ include "../../DB/db_conn.php";
 
 <body>
   <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #11999e; color:white;">
-    News Panel
+    Carrers Panel
   </nav>
 
   <div class="container">
@@ -37,38 +37,47 @@ include "../../DB/db_conn.php";
     </div>';
     }
     ?>
-    <a href="add-new.php" class="btn btn-dark mb-3" style="background-color: #443cf4" >Add New</a>
+    <a href="add-new.php" class="btn btn-dark mb-3" style="background-color: #443cf4" >Add Job</a>
 
-    <table class="table table-hover text-center">
+    <table class="table table-hover text-center" style="width=100%;">
       <thead class="table-dark">
         <tr>
           <th scope="col"  style="text-align: start;"> #</th>
           <th scope="col"  style="text-align: start;"> Title</th>
           <th scope="col"  style="text-align: start;"> Description</th>
+          <th scope="col"  style="text-align: start;"> Experienced</th>
+          <th scope="col"  style="text-align: start;"> Link</th>
+
 
           <th scope="col"  style="text-align: start;"> Edit/Delete</th>
         </tr>
       </thead>
       <tbody>
         <?php
-        $sql = "SELECT * FROM `news`";
+        $sql = "SELECT * FROM `jobs`";
         $result = mysqli_query($conn, $sql);
         while ($row = mysqli_fetch_assoc($result)) {
           ?>
           <tr>
             <td  style="text-align: start;">
-              <?php echo $row["News_ID"] ?>
+              <?php echo $row["Job_ID"] ?>
             </td>
             <td style="text-align: start;">
-              <?php echo $row["News_Title"] ?>
+              <?php echo $row["Job_Title"] ?>
             </td>
             <td style="text-align: start;">
-              <?php echo $row["News_Description"] ?>
+              <?php echo $row["Job_Description"] ?>
+            </td>
+            <td style="text-align: start;">
+              <?php echo $row["Job_Experienced"] ?>
+            </td>
+            <td style="text-align: start;">
+              <?php echo $row["Job_Link"] ?>
             </td>
             <td>
-              <a href="edit.php?News_ID=<?php echo $row["News_ID"] ?>   " class="link-dark"  ><i
+              <a href="edit.php?Job_ID=<?php echo $row["Job_ID"] ?>   " class="link-dark"  ><i
                   class="fa-solid fa-pen-to-square fs-5 me-3 blue" style="color: #443cf4;"></i></a>
-              <a href="delete.php?News_ID=<?php echo $row["News_ID"] ?>" class="link-dark"><i
+              <a href="delete.php?Job_ID=<?php echo $row["Job_ID"] ?>" class="link-dark"><i
                   class="fa-solid fa-trash fs-5" style="color: #ff0021;"></i></a>
             </td>
           </tr>

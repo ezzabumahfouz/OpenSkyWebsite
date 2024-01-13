@@ -1,19 +1,23 @@
 <?php
 include "../../DB/db_conn.php";
-$News_ID = $_GET["News_ID"];
+$Job_ID = $_GET["Job_ID"];
 
 if (isset($_POST["submit"])) {
-  $News_Title = $_POST['News_Title'];
-  $News_Description = $_POST['News_Description'];
+  $Job_Title = $_POST['Job_Title'];
+  $Job_Description = $_POST['Job_Description'];
+  $Job_Experienced = $_POST['Job_Experienced'];
+  $Job_Link = $_POST['Job_Link'];
 
-  // $sql = "UPDATE news SET News_ID='$News_ID',News_Title='$News_Title',News_Description='$News_Description' WHERE 'News_ID' = $News_ID";
-  // $sql = "UPDATE news SET News_Title='$News_Title',News_Description='$News_Description' WHERE News_ID = '$News_ID";
-  $sql = "UPDATE `news` SET `News_Title`='$News_Title',`News_Description`='$News_Description' WHERE News_ID = $News_ID";
+
+
+  // $sql = "UPDATE Job SET Job_ID='Job_ID',Job_Title='$Job_Title',Job_Description='$Job_Description' WHERE 'Job_ID' = Job_ID";
+  // $sql = "UPDATE Job SET Job_Title='$Job_Title',Job_Description='$Job_Description' WHERE Job_ID = 'Job_ID";
+  $sql = "UPDATE `Jobs` SET `Job_Title`='$Job_Title',`Job_Description`='$Job_Description',`Job_Experienced`='$Job_Experienced',`Job_Link`='$Job_Link' WHERE Job_ID = $Job_ID";
 
   $result = mysqli_query($conn, $sql);
 
   if ($result) {
-    header("Location: News.php?msg=Data updated successfully");
+    header("Location: Carrers.php?msg=Data updated successfully");
   } else {
     echo "Failed: " . mysqli_error($conn);
   }
@@ -46,7 +50,7 @@ if (isset($_POST["submit"])) {
 
 <body>
   <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #11999e; color:white;">
-    News Panel
+    Job Panel
   </nav>
 
   <div class="container">
@@ -56,7 +60,7 @@ if (isset($_POST["submit"])) {
     </div>
 
     <?php
-    $sql = "SELECT * FROM news WHERE News_ID = $News_ID LIMIT 1";
+    $sql = "SELECT * FROM Jobs WHERE Job_ID = $Job_ID LIMIT 1";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
     ?>
@@ -65,23 +69,44 @@ if (isset($_POST["submit"])) {
       <form action="" method="post" style="width:90vw; min-width:300px;">
         <div class="row mb-3">
           <div class="col">
-            <label class="form-label">First Name:</label>
-            <input type="text" class="form-control" name="News_Title" value="<?php echo $row['News_Title'] ?>">
+            <label class="form-label">Title:</label>
+            <input type="text" class="form-control" name="Job_Title" value="<?php echo $row['Job_Title'] ?>">
           </div>
 
-          <div class="col">
-            <label class="form-label">Last Name:</label>
-            <textarea type="text" class="form-control" name="News_Description" style="
- min-height:100px; max-height: 200px;   overflow-wrap: break-all;"
-              value=" <?php echo $row['News_Description'] ?>"> </textarea>
-          </div>
+          
         </div>
+        <div class="row mb-3">
+          <div class="col">
+            <label class="form-label">Description:</label>
+            <textarea type="text" class="form-control" name="Job_Title" value="<?php echo $row['Job_Description'] ?>" style="min-height:100px; max-height: 200px;"> </textarea>
+          </div>
+
+          
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            <label class="form-label">Experience:</label>
+            <input type="text" class="form-control" name="Job_Title" value="<?php echo $row['Job_Experienced'] ?>">
+          </div>
+
+          
+        </div>
+        <div class="row mb-3">
+          <div class="col">
+            <label class="form-label">Link:</label>
+            <input type="text" class="form-control" name="Job_Title" value="<?php echo $row['Job_Link'] ?>">
+          </div>
+
+          
+        </div>
+        
+        
 
 
 
         <div>
           <button type="submit" class="btn btn-success" name="submit">Update</button>
-          <a href="News.php" class="btn btn-danger">Cancel</a>
+          <a href="Job.php" class="btn btn-danger">Cancel</a>
         </div>
       </form>
     </div>

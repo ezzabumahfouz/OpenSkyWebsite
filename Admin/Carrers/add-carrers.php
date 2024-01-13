@@ -5,7 +5,7 @@ if (isset($_POST["submit"])) {
    $News_Title = $_POST['News_Title'];
    $News_Description = $_POST['News_Description'];
 
-   $sql = "INSERT INTO `news`(`News_ID`, `News_Title`, `News_Description`) VALUES (NULL,'$News_Title','$News_Description')";
+   $sql = "INSERT INTO `news`(`Job_ID`, `News_Title`, `News_Description`) VALUES (NULL,'$News_Title','$News_Description')";
 
    $result = mysqli_query($conn, $sql);
 
@@ -40,13 +40,13 @@ if (isset($_POST["submit"])) {
 
 <body>
    <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #11999e;  color:white;">
-   News Panel
+   Carrers Panel
    </nav>
 
    <div class="container">
       <div class="text-center mb-4">
-         <h3>Add News</h3>
-         <p class="text-muted">Complete the form below to add a news</p>
+         <h3>Add Carrers</h3>
+         <p class="text-muted">Complete the form below to add a carrer</p>
       </div>
 
       <div class="container d-flex justify-content-center">
@@ -58,7 +58,7 @@ if (isset($_POST["submit"])) {
                </div>
 
                <div class="col">
-                  <label class="form-label">News Description:</label>
+                  <label class="form-label">Carrer Description:</label>
                   <input type="text" class="form-control" name="News_Description" placeholder="des...">
                </div>
             </div>

@@ -213,143 +213,151 @@ if (isset($_GET["Job_ID"])) {
 
 
 
-   
+
 
 
     <!-- new cards -->
     <div class="NewCarrers">
 
 
-            <ol style="--length: 5" role="list">
-      
-<section class="dl-blurbs">
-<dl>
-<?php
-        while ($row = mysqli_fetch_assoc($all_product)) {
-            ?>
-<div class="container">
-  <h1 class="center">                        <?php echo $row["Job_Title"]; ?>
-</h1>
-  
+        <ol style="--length: 5" role="list">
 
-  
-  <article class="episode">
-    <div class="episode__number">                        <?php echo $row["Job_ID"]; ?>
-</div>
-    <div class="episode__content">
-      <div class="title">                        <?php echo $row["Job_Experienced"]; ?>
-</div>
-      <div class="story">
-        <p>  <?php echo $row["Job_Description"]; ?></p>
-        <div class="colored">
-        <p>  <a href="<?php echo $row["Job_Link"]; ?>">View In Linkedin</a>
-</p>
-
-        </div>
-        <br>
-        <br>
-        <br>
-        <br>
-      </div>
-    </div>
-  </article>
-</div>
-<?php
-
-}
-?>
+            <section class="dl-blurbs">
+                <dl>
+                    <?php
+                    while ($row = mysqli_fetch_assoc($all_product)) {
+                        ?>
+                        <div class="container">
+                            <h1 class="center">
+                                <?php echo $row["Job_Title"]; ?>
+                            </h1>
 
 
-</section>
 
-            </ol>
-       
+                            <article class="episode">
+                                <div class="episode__number">
+                                    <?php echo $row["Job_ID"]; ?>
+                                </div>
+                                <div class="episode__content">
+                                    <div class="title">
+                                        <?php echo $row["Job_Experienced"]; ?>
+                                    </div>
+                                    <div class="story">
+                                        <p>
+                                            <?php echo $row["Job_Description"]; ?>
+                                        </p>
+                                        <div class="colored">
+                                            <p> <a target="_blank" href="<?php echo $row["Job_Link"]; ?> ">View In Linkedin</a>
+                                            </p>
+
+                                        </div>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <?php
+
+                    }
+                    ?>
+
+
+            </section>
+
+        </ol>
+
 
 
     </div>
 
     <!-- Style -->
-<style>
-    *,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
 
-body {
-  background: white;
-  color: black;
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-}
+        body {
+            background: white;
+            color: black;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+        }
 
-p {
-  margin: 0 0 13px 0;
-}
-.colored a {
-    color: #11999e ;
-    
-}
-a {
-  color: black;
-}
+        p {
+            margin: 0 0 13px 0;
+        }
 
-.center { text-align: center; }
+        .colored a {
+            color: #11999e;
 
-.container {
-  width: 95%;
-  max-width: 1220px;
-  margin: 0 auto;
-}
+        }
 
-.episode {
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  position: relative;
-}
+        a {
+            color: black;
+        }
 
-.episode__number {
-  font-size: 5vw;
-  font-weight: 600;
-  padding: 10px 0;
-  position: sticky;
-  top: 17vh;
-  text-align: center;
-  height: calc(10vw + 20px);
-  transition: all 0.2s ease-in;
-}
+        .center {
+            text-align: center;
+        }
 
-.episode__content {
-  border-top: 2px solid #11999e;
-  display: grid;
-  grid-template-columns: 1fr 4fr;
-  grid-gap: 5px;
-  padding: 15px 0;
-}
+        .container {
+            width: 95%;
+            max-width: 1220px;
+            margin: 0 auto;
+        }
 
-.episode__content .title {
-  font-weight: 600
-  ;
-  display: block;
-  color: #696969;
-}
+        .episode {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            position: relative;
+        }
 
-.episode__content .story {
-  line-height: 26px;
-}
+        .episode__number {
+            font-size: 5vw;
+            font-weight: 600;
+            padding: 10px 0;
+            position: sticky;
+            top: 17vh;
+            text-align: center;
+            height: calc(10vw + 20px);
+            transition: all 0.2s ease-in;
+        }
 
-@media (max-width: 600px) {
-  .episode__content {
-    grid-template-columns: 1fr;
-  }
-}
+        .episode__content {
+            border-top: 2px solid #11999e;
+            display: grid;
+            grid-template-columns: 1fr 4fr;
+            grid-gap: 5px;
+            padding: 15px 0;
+        }
 
-@media (max-width: 576px) {
-  .episode__content .story {
-    font-size: 15px;
-  }
-}
-</style>    <!-- End Style -->
+        .episode__content .title {
+            font-weight: 600;
+            display: block;
+            color: #696969;
+        }
+
+        .episode__content .story {
+            line-height: 26px;
+        }
+
+        @media (max-width: 600px) {
+            .episode__content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .episode__content .story {
+                font-size: 15px;
+            }
+        }
+    </style> <!-- End Style -->
     <!-- End New Cards -->
     <script type="text/javascript">
         $(document).ready(function () {
