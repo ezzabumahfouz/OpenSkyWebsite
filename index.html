@@ -446,22 +446,37 @@ if (isset($_GET["News_ID"])) {
   <div class="slideshow-container">
   
     <div class="mySlides fade">
-      <div class="numbertext">1 / 3</div>
-      <img src="data:image/jpeg;base64,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" style="width:100%">
-      <div class="text">Caption Two</div>
+      <div class="numbertext">1 / 6</div>
+      <img src="assets/cover photos/a.png" style="width:100%">
+      <!-- <div class="text">Caption Two</div> -->
     </div>
    
     
     <div class="mySlides fade">
-      <div class="numbertext">2 / 3</div>
-      <img src="data:image/jpeg;base64,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" style="width:100%">
-      <div class="text">Caption Two</div>
+      <div class="numbertext">2 / 6</div>
+      <img src="assets/cover photos/b.png" style="width:100%;">
+      <!-- <div class="text">Caption Two</div> -->
     </div>
     
     <div class="mySlides fade">
-      <div class="numbertext">3 / 3</div>
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT61asRvaxdMSOjPTKeITMLVmiiLzETP9i5HQ&usqp=CAU" style="width:100%">
-      <div class="text">Caption Three</div>
+      <div class="numbertext">3 / 6</div>
+      <img src="assets/cover photos/c.jpg" style="width:100%;">
+      <!-- <div class="text">Caption Three</div> -->
+    </div>
+    <div class="mySlides fade">
+      <div class="numbertext">4 / 6</div>
+      <img src="assets/cover photos/d.png" style="width:50%; margin-left: 25%;">
+      <!-- <div class="text">Caption Three</div> -->
+    </div>
+    <div class="mySlides fade">
+      <div class="numbertext">5 / 6</div>
+      <img src="assets/cover photos/e.jpg" style="width:100%;">
+      <!-- <div class="text">Caption Three</div> -->
+    </div>
+    <div class="mySlides fade">
+      <div class="numbertext">6 / 6</div>
+      <img src="assets/cover photos/f.jpg" style="width:100%;">
+      <!-- <div class="text">Caption Three</div> -->
     </div>
     
     <a class="prev" onclick="plusSlides(-1)">❮</a>
@@ -470,11 +485,15 @@ if (isset($_GET["News_ID"])) {
     </div>
     <br>
     
-    <div style="text-align:center">
+    <!-- <div style="text-align:center">
       <span class="dot" onclick="currentSlide(1)"></span> 
       <span class="dot" onclick="currentSlide(2)"></span> 
+
       <span class="dot" onclick="currentSlide(3)"></span> 
-    </div>
+      <span class="dot" onclick="currentSlide(4)"></span> 
+      <span class="dot" onclick="currentSlide(5)"></span> 
+      <span class="dot" onclick="currentSlide(6)"></span> 
+    </div> -->
     
     <script>
     let slideIndex = 1;
@@ -508,7 +527,10 @@ if (isset($_GET["News_ID"])) {
         * {box-sizing: border-box}
         body {font-family: Verdana, sans-serif; margin:0}
         .mySlides {display: none}
-        img {vertical-align: middle;height: 60vh;background-size: contain;}
+        img {
+          /* vertical-align: middle; */
+          height: 60vh;background-size: cover;
+        }
         
         /* Slideshow container */
         .slideshow-container {
@@ -527,7 +549,8 @@ if (isset($_GET["News_ID"])) {
           width: auto;
           padding: 16px;
           margin-top: -22px;
-          color: white;
+          color: #11999E;
+          background-color: #d2d2d2;
           font-weight: bold;
           font-size: 18px;
           transition: 0.6s ease;
@@ -611,6 +634,39 @@ if (isset($_GET["News_ID"])) {
     <h5>
       Welcome Message
     </h5>
+    <div class="welcomText">
+      <span>Welcome to OpenSky Technologies!</span> <br> <br>
+Embark on a journey of technological excellence where innovation meets precision. At OpenSky, we are excited to welcome you to our digital home, a space where challenges are transformed into opportunities through our diverse and impactful services, powered by strategic partnerships. <br> <br> <br>
+<span>Outsourcing Services (ITO and BPO):</span> <br> <br>
+Elevate your operational efficiency with our Information Technology Outsourcing (ITO) and Business Process Outsourcing (BPO) services. Our dedicated teams are ready to optimize your IT infrastructure and streamline business processes, enabling you to focus on your core strengths. <br> <br> <br>
+<span>Telecom Technologies:</span> <br> <br>
+Stay ahead in the dynamic landscape of communication with our cutting-edge telecom technologies. In collaboration with our esteemed partners, VOX Solutions and Sky Peak Technologies (CORA Mobile Edge), we bring you solutions that not only enhance ROI but redefine communication efficiency in the digital age. <br> <br> <br>
+<span>IT Services and RPA (Robotic Process Automation):</span> <br> <br>
+Experience the future of automation with our RPA services, delivered in collaboration with our partner AutoSphere, a trailblazer in RPA solutions. Unleash the power of automation to streamline processes, increase efficiency, and empower your team to focus on strategic initiatives, all backed by AutoSphere's cutting-edge RPA solution. <br> <br>
+At OpenSky, we go beyond providing services, we forge partnerships to deliver tailor-made solutions that propel your business forward. <br> <br>
+Thank you for choosing OpenSky Technologies. Explore the possibilities, engage with our expertise, and let's embark on a transformative journey together. <br> <br> <br>
+ <span> <h1>Welcome Aboard!</h1></span> <br> <br> <br>
+
+    </div>
+    <style>
+      .welcomText{
+        width: 90%;
+        margin: auto;
+        font-size: 16px;
+        color: #555;
+      }
+      .welcomText span {
+        font-weight: bold;
+        font-size: 18px;
+        color: black;
+      }
+      .welcomText span h1{
+        font-weight: bold;
+        font-size: 18px;
+        color: black;
+        letter-spacing: 1px;
+      }
+    </style>
     <div class="divider"></div>
 
     <h4>
@@ -619,6 +675,38 @@ if (isset($_GET["News_ID"])) {
     <h5>
       Why Open Sky Technology
     </h5>
+    <div class="why">
+“use the images as information cards where an image is there and when the mouse comes over it, it will flip and show the description” <br><br>
+Welcome to Open Sky Technologies – where innovation, partnership, and excellence converge to shape the future of your business. Explore the possibilities, engage with our expertise, and let's embark on a journey of limitless potential together. <br><br>
+At Open Sky Technologies, our commitment to excellence sets us apart, making us your ideal partner in navigating the ever-evolving landscape of technology and innovation. Here's why OpenSky stands out: <br><br>
+<br><span>Innovative Solutions:</span> <br><br>
+Open Sky is at the forefront of technological innovation. We don't just offer solutions; we craft innovative answers to your unique challenges. Our dynamic approach ensures that your business is equipped with the latest advancements, driving success in a rapidly changing digital world. <br><br>
+<br><span>Strategic Partnerships:</span> <br><br>
+Collaborative success is ingrained in our DNA. Open Sky forms strategic partnerships with industry leaders like VOX Solutions, Sky Peak Technologies, CHI and AutoSphere. These alliances empower us to deliver specialized services and cutting-edge solutions, ensuring that your business remains ahead of the curve. <br><br>
+<br><span>Comprehensive Service Portfolio:</span> <br><br>
+Our diverse service portfolio spans Information Technology Outsourcing (ITO), Business Process Outsourcing (BPO), Telecom Technologies, Information Technology services and Robotic Process Automation (RPA). From streamlining operations to revolutionizing communication and automating processes, Open Sky is your one-stop destination for comprehensive and integrated solutions. <br><br>
+<br><span>Client-Centric Approach:</span> <br><br>
+Your success is our priority. At Open Sky, we adopt a client-centric approach, customizing our services to suit your specific needs. We listen, understand, and collaborate closely with you to deliver solutions that align with your goals and aspirations. <br><br>
+<br><span>Unwavering Quality Assurance:</span> <br><br>
+Quality is non-negotiable at Open Sky. Our teams are dedicated to delivering solutions that not only meet but exceed industry standards. Expect nothing less than excellence in every aspect of our service offerings. <br><br>
+<br><span>Future-Focused Vision:</span> <br><br>
+As technology advances, so do we. OpenSky embraces a future-focused vision, ensuring that your business is prepared for the challenges and opportunities that lie ahead. Our proactive approach positions you to thrive in an ever-changing digital landscape. <br><br>
+
+    </div>
+        <style>
+      .why{
+        width: 90%;
+        margin: auto;
+        font-size: 16px;
+        color: #555;
+      }
+      .why span {
+        font-weight: bold;
+        font-size: 18px;
+        color: black;
+      }
+     
+    </style>
     <div class="divider"></div>
 
   <div class="our-client">
