@@ -2,15 +2,21 @@
 include "../../DB/db_conn.php";
 
 if (isset($_POST["submit"])) {
-   $News_Title = $_POST['News_Title'];
-   $News_Description = $_POST['News_Description'];
+   $Job_ID = $_POST['Job_ID'];
+   $Job_Title = $_POST['Job_Title'];
+   $Job_Description = $_POST['Job_Description'];
+   $Job_Experienced = $_POST['Job_Experienced'];
+   $Job_Link = $_POST['Job_Link'];
 
-   $sql = "INSERT INTO `news`(`Job_ID`, `News_Title`, `News_Description`) VALUES (NULL,'$News_Title','$News_Description')";
+
+   // $sql = "INSERT INTO `news`(`Job_ID`, `Job_ID`, `Job_Title`) VALUES (NULL,'$Job_ID','$Job_Title')";
+   $sql = "INSERT INTO `jobs`(`Job_ID`, `Job_Title`, `Job_Description`, `Job_Experienced`, `Job_Link`) 
+   VALUES                    (null,'$Job_Title','$Job_Description','$Job_Experienced','$Job_Link')";
 
    $result = mysqli_query($conn, $sql);
 
    if ($result) {
-      header("Location: News.php?msg=New record created successfully");
+      header("Location: Carrers.php?msg=New record created successfully");
    } else {
       echo "Failed: " . mysqli_error($conn);
    }
@@ -54,19 +60,35 @@ if (isset($_POST["submit"])) {
             <div class="row mb-3">
                <div class="col">
                   <label class="form-label">Title:</label>
-                  <input type="text" class="form-control" name="News_Title" placeholder="title">
+                  <input type="text" class="form-control" name="Job_ID" placeholder="title">
                </div>
 
-               <div class="col">
+             
+            </div>
+            <div class="row mb-3">
+            <div class="col">
                   <label class="form-label">Carrer Description:</label>
-                  <input type="text" class="form-control" name="News_Description" placeholder="des...">
+                  <input type="text" class="form-control" name="Job_Title" placeholder="des...">
+               </div>
+            </div>
+            <div class="row mb-3">
+            <div class="col">
+                  <label class="form-label">Carrer Experienced:</label>
+                  <input type="text" class="form-control" name="Job_Experienced" placeholder="Exper...">
+               </div>
+            </div>
+            <div class="row mb-3">
+            <div class="col">
+                  <label class="form-label">Carrer Link:</label>
+                  <input type="text" class="form-control" name="Job_Link" placeholder="Link...">
                </div>
             </div>
 
           
+          
             <div>
                <button type="submit" class="btn btn-success" name="submit">Save</button>
-               <a href="News.php" class="btn btn-danger">Cancel</a>
+               <a href="Carrers.php" class="btn btn-danger">Cancel</a>
             </div>
          </form>
       </div>

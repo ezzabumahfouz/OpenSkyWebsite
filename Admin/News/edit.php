@@ -71,9 +71,9 @@ if (isset($_POST["submit"])) {
 
           <div class="col">
             <label class="form-label">Last Name:</label>
-            <textarea type="text" class="form-control" name="News_Description" style="
+            <input type="text" class="form-control" name="News_Description" style="
  min-height:100px; max-height: 200px;   overflow-wrap: break-all;"
-              value=" <?php echo $row['News_Description'] ?>"> </textarea>
+              value=" <?php echo $row['News_Description'] ?>"> 
           </div>
         </div>
 

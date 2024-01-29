@@ -22,6 +22,44 @@ include "../../DB/db_conn.php";
   <title>Admin | Open Sky Technology</title>
 </head>
 
+<!-- Nav Bar -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {margin:0;}
+
+.icon-bar {
+  width: 100%;
+  background-color: #555;
+  overflow: auto;
+}
+
+.icon-bar a {
+  float: left;
+  width: 20%;
+  text-align: center;
+  padding: 12px 0;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 36px;
+}
+
+.icon-bar a:hover {
+  background-color: #000;
+}
+
+.active {
+  background-color: #11999e;
+}
+</style>
+<body>
+
+<div class="icon-bar">
+  <a  href="../../index.html"><i class="fa fa-home"></i></a> 
+  <a href="../News/News.php"><i class="fa fa-newspaper-o"></i></a> 
+  <a class="active" href="Carrers/Carrers.php"><i class="fa fa-building-o"></i></a> 
+  <!-- <a href="#"><i class="fa fa-globe"></i></a> -->
+</div>
+<!-- End Nav Bar -->
 <body>
   <nav class="navbar navbar-light justify-content-center fs-3 mb-5" style="background-color: #11999e; color:white;">
     Carrers Panel
@@ -37,7 +75,7 @@ include "../../DB/db_conn.php";
     </div>';
     }
     ?>
-    <a href="add-new.php" class="btn btn-dark mb-3" style="background-color: #443cf4" >Add Job</a>
+    <a href="add-carrers.php" class="btn btn-dark mb-3" style="background-color: #443cf4" >Add Job</a>
 
     <table class="table table-hover text-center" style="width=100%;">
       <thead class="table-dark">

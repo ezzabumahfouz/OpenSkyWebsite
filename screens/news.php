@@ -76,8 +76,8 @@ if (isset($_GET["News_ID"])) {
                     </div>
                     <div class="column">
                         <h3>Management</h3>
-                        <a href="../screens/management.html"> Board of Directors</a>
-                        <a href="../screens/management.html">Management Team</a>
+                        <!-- <a href="../screens/management.html"> Board of Directors</a> -->
+                        <!-- <a href="../screens/management.html">Management Team</a> -->
                     </div>
                     <div class="column">
                         <h3>Contact Us</h3>

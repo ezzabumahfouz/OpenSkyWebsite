@@ -78,7 +78,7 @@ if (isset($_POST["submit"])) {
         <div class="row mb-3">
           <div class="col">
             <label class="form-label">Description:</label>
-            <textarea type="text" class="form-control" name="Job_Title" value="<?php echo $row['Job_Description'] ?>" style="min-height:100px; max-height: 200px;"> </textarea>
+            <input type="text" class="form-control" name="Job_Description" value="<?php echo $row['Job_Description'] ?>">
           </div>
 
           
@@ -86,7 +86,7 @@ if (isset($_POST["submit"])) {
         <div class="row mb-3">
           <div class="col">
             <label class="form-label">Experience:</label>
-            <input type="text" class="form-control" name="Job_Title" value="<?php echo $row['Job_Experienced'] ?>">
+            <input type="text" class="form-control" name="Job_Experienced" value="<?php echo $row['Job_Experienced'] ?>">
           </div>
 
           
@@ -94,7 +94,7 @@ if (isset($_POST["submit"])) {
         <div class="row mb-3">
           <div class="col">
             <label class="form-label">Link:</label>
-            <input type="text" class="form-control" name="Job_Title" value="<?php echo $row['Job_Link'] ?>">
+            <input type="text" class="form-control" name="Job_Link" value="<?php echo $row['Job_Link'] ?>">
           </div>
 
           
@@ -106,7 +106,7 @@ if (isset($_POST["submit"])) {
 
         <div>
           <button type="submit" class="btn btn-success" name="submit">Update</button>
-          <a href="Job.php" class="btn btn-danger">Cancel</a>
+          <a href="Carrers.php" class="btn btn-danger">Cancel</a>
         </div>
       </form>
     </div>
