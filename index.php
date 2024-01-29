@@ -715,7 +715,7 @@ As technology advances, so do we. OpenSky embraces a future-focused vision, ensu
     <div class="news">
     <ol>
 
-    <!-- <?php
+    <?php
     $x = 0;
         while ($row = mysqli_fetch_assoc($all_product)) {
           if ($x <2) {
@@ -732,9 +732,11 @@ As technology advances, so do we. OpenSky embraces a future-focused vision, ensu
           }
 
         }
-        ?> -->
-        <li><span>01</span><p> This is news title <br> <h6> Here will be all news</h6></p></li>
-        <li><span>02</span><p> This is news title <br> <h6> Here will be all news</h6></p></li>
+        ?>
+
+
+        <!-- <li><span>01</span><p> This is news title <br> <h6> Here will be all news</h6></p></li>
+        <li><span>02</span><p> This is news title <br> <h6> Here will be all news</h6></p></li> -->
 
 
    </ol>
